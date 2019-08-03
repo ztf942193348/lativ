@@ -2,7 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-import Home from './page/Home.vue'
+import Home from './pages/Home.vue';
+import Nhome from './pages/second/Nhome';
+//精选
+import Ngood from './pages/Ngood';
 export default new Router({
   routes: [
     //重定向路由
@@ -16,8 +19,19 @@ export default new Router({
           path:'main',
           name:'main',
           component: Home.components.Zhome
+        },
+        {
+          path:'nhome',
+          name:'nhome',
+          component: Nhome,
         }
       ]
-    }
+    },
+    //精选 
+    {
+      name:'ngood',
+      path :'/ngood',
+      component :Ngood
+    },
   ]
 })

@@ -5,6 +5,7 @@
     </div>
 </template>
 <script>
+// /* eslint-disable */
 import Zfooter from '../components/Zfooter'
 import Zhome from './second/Zhome'
 export default {
