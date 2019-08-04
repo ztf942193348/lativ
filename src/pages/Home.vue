@@ -16,6 +16,12 @@ import Zbaby from "./second/Nhome/Zbaby";
 import Zsports from "./second/Nhome/Zsports";
 // 这里是精选
 import Ngood from './second/Ngood/Ngood'
+// 这里是分类
+import Zfenlei from './second/Zfenlei/Zfenlei'
+// 这里是购物车
+import Zgouwuche from './second/Zgouwuche/Zgouwuche'
+// 这里是个人
+import Zgeren from './second/Zgeren/Zgeren'
 export default {
   components: {
     Zfooter,
@@ -25,7 +31,10 @@ export default {
     Zbaby,
     Zkids,
     Zsports,
-    Ngood
+    Ngood,
+    Zgouwuche,
+    Zfenlei,
+    Zgeren
   }
 };
 </script>

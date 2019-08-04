@@ -19,6 +19,9 @@ import { Icon } from 'vant';
 import { Swipe, SwipeItem,Lazyload} from 'vant';
 //layout 布局
 import { Row, Col } from 'vant';
+//panel
+import { Panel } from 'vant';
+
 export default () => {
     Vue.use(Search);
     Vue.use(Tabbar).use(TabbarItem);
@@ -30,4 +33,5 @@ export default () => {
     Vue.use(Icon);
     Vue.use(Swipe).use(SwipeItem).use(Lazyload);
     Vue.use(Row).use(Col);
+    Vue.use(Panel);
 }

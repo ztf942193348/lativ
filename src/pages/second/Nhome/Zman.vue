@@ -11,9 +11,6 @@ import Zsearch from '../../../components/Zsearch'
 import Zimage from '../../../components/Zimage'
 
 export default {
-    created(){
-        console.log( this.$store.categoryIndex)
-    },
     components:{
         Zcategory,
         Zsearch,
