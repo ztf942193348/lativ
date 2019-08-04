@@ -3,6 +3,8 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Home from './pages/Home.vue'
+import Login from './pages/Login.vue'
+
 export default new Router({
   routes: [
     //重定向
@@ -61,7 +63,13 @@ export default new Router({
         //   component: Home.components.geren,
         // }
       ]
-    }
+    },
+    {
+      path:'login',
+      name:'login',
+      component: Login
+    },
+    { path: '/login', redirect: { name: 'login' } },
 
   ]
 })

@@ -19,6 +19,14 @@ import { Icon } from 'vant';
 import { Swipe, SwipeItem,Lazyload} from 'vant';
 //layout 布局
 import { Row, Col } from 'vant';
+//Tab 标签页
+import { Tab, Tabs } from 'vant';
+//NavBar 导航栏
+import { NavBar } from 'vant';
+//Field 输入框
+import { Field } from 'vant';
+//button 按钮
+import { Button } from 'vant';
 export default () => {
     Vue.use(Search);
     Vue.use(Tabbar).use(TabbarItem);
@@ -30,4 +38,8 @@ export default () => {
     Vue.use(Icon);
     Vue.use(Swipe).use(SwipeItem).use(Lazyload);
     Vue.use(Row).use(Col);
+    Vue.use(Tab).use(Tabs);
+    Vue.use(NavBar);
+    Vue.use(Field);
+    Vue.use(Button);
 }
