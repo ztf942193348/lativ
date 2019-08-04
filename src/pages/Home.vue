@@ -6,22 +6,26 @@
 </template>
 <script>
 /* eslint-disable */
+// 这里是首页
 import Zfooter from "../components/Zfooter";
-import Zhome from "./second/Zhome";
-import Zwomen from "./second/Zwomen";
-import Zman from "./second/Zman";
-import Zkids from "./second/Zkids";
-import Zbaby from "./second/Zbaby";
-import Zsports from "./second/Zsports";
+import Nhome from "./second/Nhome/Nhome";
+import Zwomen from "./second/Nhome/Zwomen";
+import Zman from "./second/Nhome/Zman";
+import Zkids from "./second/Nhome/Zkids";
+import Zbaby from "./second/Nhome/Zbaby";
+import Zsports from "./second/Nhome/Zsports";
+// 这里是精选
+import Ngood from './second/Ngood/Ngood'
 export default {
   components: {
     Zfooter,
-    Zhome,
+    Nhome,
     Zwomen,
     Zman,
     Zbaby,
     Zkids,
-    Zsports
+    Zsports,
+    Ngood
   }
 };
 </script>

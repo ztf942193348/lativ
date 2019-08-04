@@ -6,9 +6,9 @@
 </div>
 </template>
 <script>
-import Zcategory from '../../components/Zcategory'
-import Zsearch from '../../components/Zsearch'
-import Zimage from '../../components/Zimage'
+import Zcategory from '../../../components/Zcategory'
+import Zsearch from '../../../components/Zsearch'
+import Zimage from '../../../components/Zimage'
 export default {
     components:{
         Zcategory,

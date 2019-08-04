@@ -57,8 +57,8 @@
   </div>
 </template>
 <script>
-import Zsearch from '../../components/Zsearch'
-import Zimage from '../../components/Zimage'
+import Zsearch from '../../../components/Zsearch'
+import Zimage from '../../../components/Zimage'
 export default {
     components:{
         Zsearch,

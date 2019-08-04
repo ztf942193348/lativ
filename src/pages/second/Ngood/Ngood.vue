@@ -3,12 +3,11 @@
         <div id="hd_title" class="title_bottom">
         <span class="title ellipsis">精選</span>
         </div>
-        <router-view></router-view>
         <Zfooter></Zfooter>
     </div>
 </template>
 <script>
-import Zfooter from '../components/Zfooter'
+import Zfooter from '../../../components/Zfooter'
 export default {
     components:{
         Zfooter,

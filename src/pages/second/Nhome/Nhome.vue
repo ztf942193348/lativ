@@ -1,11 +1,16 @@
 <template>
+<div>
     <Zsearch :route="0"></Zsearch>
+    <Ncontent />
+</div>
 </template>
 <script>
-import Zsearch from '../../components/Zsearch'
+import Zsearch from '../../../components/Zsearch'
+import Ncontent from '../../../components/Ncontent'
 export default {
     components:{
-        Zsearch
+        Zsearch,
+        Ncontent
     },
     async created() {
     this.$store.categoryIndex = await this.getData(
@@ -15,3 +20,4 @@ export default {
   }
 }
 </script>
+
