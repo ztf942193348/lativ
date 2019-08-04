@@ -71,7 +71,7 @@ const router = new Router({
         {
           path: 'geren',
           name: 'geren',
-          component: Home.components.geren,
+          component: Home.components.Zgeren,
         }
       ]
     },
@@ -79,9 +79,7 @@ const router = new Router({
       path:'login',
       name:'login',
       component: Login
-    },
-    { path: '/login', redirect: { name: 'login' } },
-
+    }
   ]
 })
 
