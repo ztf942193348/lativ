@@ -59,7 +59,7 @@ const router = new Router({
           component: Home.components.Zgouwuche,
           //进入购物车的路由守卫，若有登录，则允许进入。若没有登录，则推去sign路由
           beforeEnter: function(to,from,next){
-            let isLogin = 1
+            let isLogin = 0
             if(isLogin){
               next()
             }else{
