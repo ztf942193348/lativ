@@ -55,7 +55,18 @@ const router = new Router({
         {
           path: 'gouwuche',
           name: 'gouwuche',
-          component: Home.components.gouwuche,
+          component: Home.components.Zgouwuche,
+          //进入购物车的路由守卫，若有登录，则允许进入。若没有登录，则推去sign路由
+          beforeEnter: function(to,from,next){
+            let isLogin = 0
+            if(isLogin){
+              next()
+            }else{
+              router.push({
+                name:'login'
+              })
+            }
+          }
         },
         {
           path: 'geren',
@@ -69,7 +80,8 @@ const router = new Router({
       name:'login',
       component: Login
     },
-    { path: '/login', redirect: { name: 'login' } }
+    { path: '/login', redirect: { name: 'login' } },
+
   ]
 })
 
