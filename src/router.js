@@ -12,7 +12,7 @@ const router = new Router({
     { path: '/', redirect: { name: 'main' } },
     //一层路由
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
       //嵌套路由(二层)
@@ -61,7 +61,7 @@ const router = new Router({
           path: 'gouwuche',
           name: 'gouwuche',
           component: Home.components.Zgouwuche,
-          //进入购物车的路由守卫，若有登录，则允许进入。若没有登录，则推去sign路由
+          //进入购物车的路由守卫，若有登录，则允许进入。若没有登录，则推去login路由
           beforeEnter: function(to,from,next){
             let isLogin = 0
             if(isLogin){
@@ -77,6 +77,17 @@ const router = new Router({
           path: 'geren',
           name: 'geren',
           component: Home.components.Zgeren,
+          //进入个人的路由守卫，若有登录，则允许进入。若没有登录，则推去login路由
+          beforeEnter: function(to,from,next){
+            let isLogin = 1
+            if(isLogin){
+              next()
+            }else{
+              router.push({
+                name:'login'
+              })
+            }
+          }
         }
       ]
     },
@@ -84,7 +95,8 @@ const router = new Router({
       path:'login',
       name:'login',
       component: Login
-    }
+    },
+    
   ]
 })
 
