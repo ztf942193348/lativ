@@ -11,9 +11,9 @@
     <!-- 主体 -->
     <van-row>
       <van-col span="6"
-      ><img src="https://s1.lativ.com.tw/m/i/40156/40156011/4015601_360.jpg" alt="" /></van-col>
+      ><img src="" alt="" /></van-col>
       <van-col span="6"
-      ><img src="https://s1.lativ.com.tw/m/i/40156/40156011/4015601_360.jpg" alt="" /></van-col>
+      ><img src="" alt="" /></van-col>
     </van-row>
   </div>
 </template>
