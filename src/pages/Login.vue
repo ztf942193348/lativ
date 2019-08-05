@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <van-icon name="cross" size='24px'/>
+        <van-icon name="cross" size='24px' @click="link"/>
         <van-tabs @click="onClick" color=" #4d3126">
         <van-tab title="手机号码注册">
             <van-cell-group>
@@ -13,10 +13,16 @@
                     placeholder="请输入手机号"
                     @click-right-icon="$toast('question')"
                 />
+                <van-field
+                v-model="password"
+                type="password"
+                right-icon="eye"
+                placeholder="请输入密码(6-20英数字)"
+            />
             </van-cell-group>
             <van-button type="primary" size="large">继续</van-button>
             <div style="position: absolute;
-        top: 225px;    font-size: 13px;color: #666;
+        top: 300px;    font-size: 13px;color: #666;
         left: -65px;">第一次购物请使用手机号注册</div>
         </van-tab>
         
@@ -48,6 +54,9 @@ export default {
     methods: {
         onClick() {
             // this.$toast(title);
+        },
+        link(){
+            this.$router.go(-1)
         }
     },
     data(){
@@ -90,7 +99,7 @@ export default {
     .van-cell-group{
         width: 345px;
         margin-top: 50px;
-        position: absolute ;
+        // position: absolute ;
         left: -60px ;
         .van-field{
             height:47px;
@@ -106,7 +115,7 @@ export default {
         background: #cccccc;
         position: absolute;
         border: none;
-        top: 175px;
+        top: 240px;
         left: -65px;
     }
 }
