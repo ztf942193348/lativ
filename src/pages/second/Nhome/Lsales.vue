@@ -19,6 +19,7 @@
   </div>
 </template>
 <script>
+import Zsearch from '../../../components/Zsearch'
 export default {
   data() {
     return {
@@ -34,6 +35,9 @@ export default {
       ],
       shoplist: ["WOMEN", "MEN", "KIDS", "BABY", "SPORTS"]
     };
+  },
+  components:{
+    Zsearch
   }
   // async created() {
   //     let list = await this.$axios(
