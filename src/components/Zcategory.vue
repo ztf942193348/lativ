@@ -10,17 +10,17 @@
         <van-image
           width="45"
           height="45"
-          src="https://s4.lativ.com.tw/m/i/LevelThreePicture/Tshirt-POLO/short-sleeves/3490102_360.jpg"
+          src="https://s2.lativ.com.tw/m/images/assets/icons/icon_allproduct.svg"
         />
-        <span style="font-size:12px">文字</span>
+        <span style="font-size:12px">全部商品</span>
       </van-grid-item>
       <van-grid-item>
         <van-image
           width="45"
           height="45"
-          src="https://s4.lativ.com.tw/m/i/LevelThreePicture/Tshirt-POLO/short-sleeves/3490102_360.jpg"
+          src="https://s3.lativ.com.tw/m/images/assets/icons/icon_more_category.svg"
         />
-        <span style="font-size:12px">文字</span>
+        <span style="font-size:12px">更多分类</span>
       </van-grid-item>
     </van-grid>
     <!-- 分隔线 -->
