@@ -31,6 +31,8 @@ import { Button } from 'vant';
 import { Panel } from 'vant';
 //优惠券
 import { CouponCell, CouponList } from 'vant';
+//SubmitBar 提交订单栏
+import { SubmitBar } from 'vant';
 
 export default () => {
     Vue.use(Search);
@@ -49,4 +51,5 @@ export default () => {
     Vue.use(Button);
     Vue.use(Panel);
     Vue.use(CouponCell).use(CouponList);
+    Vue.use(SubmitBar);
 }
