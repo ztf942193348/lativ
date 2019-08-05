@@ -14,6 +14,7 @@ import Zman from "./second/Nhome/Zman";
 import Zkids from "./second/Nhome/Zkids";
 import Zbaby from "./second/Nhome/Zbaby";
 import Zsports from "./second/Nhome/Zsports";
+import Lsales from './second/Nhome/Lsales'
 // 这里是精选
 import Ngood from './second/Ngood/Ngood'
 // 这里是分类
@@ -34,7 +35,8 @@ export default {
     Ngood,
     Zgouwuche,
     Zfenlei,
-    Zgeren
+    Zgeren,
+    Lsales
   }
 };
 </script>

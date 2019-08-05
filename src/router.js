@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
+//import axios from 'axios'
 
 import Home from './pages/Home.vue'
 import Login from './pages/Login.vue'
@@ -21,6 +22,10 @@ const router = new Router({
           name: 'main',
           component: Home.components.Nhome
         },{
+          path: 'sales',
+          name: 'sales',
+          component: Home.components.Lsales
+        }, {
           path: 'women',
           name: 'women',
           component: Home.components.Zwomen
