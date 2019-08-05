@@ -29,6 +29,8 @@ import { Field } from 'vant';
 import { Button } from 'vant';
 //panel
 import { Panel } from 'vant';
+//优惠券
+import { CouponCell, CouponList } from 'vant';
 
 export default () => {
     Vue.use(Search);
@@ -46,4 +48,5 @@ export default () => {
     Vue.use(Field);
     Vue.use(Button);
     Vue.use(Panel);
+    Vue.use(CouponCell).use(CouponList);
 }

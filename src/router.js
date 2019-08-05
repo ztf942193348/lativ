@@ -6,6 +6,7 @@ Vue.use(Router)
 import Home from './pages/Home.vue'
 import Login from './pages/Login.vue'
 
+
 const router = new Router({
   routes: [
     //重定向
