@@ -68,7 +68,7 @@ export default {
 <style scoped lang="scss">
 #hd_title{
     margin: 0;
-    width: 75%;
+    width: 100%;
     height: 2.375rem;
     line-height: 3.125rem;
     padding: .375rem .75rem;
@@ -76,11 +76,13 @@ export default {
     z-index: 99;
     font-size: 0;
     border-bottom: 1px solid #eee;
+    position: fixed;
+    top:0;
     .title {
         position: absolute;
         width: 50%;
         top: 0;
-        left: 13%;
+        left: 22%;
         text-align: center;
         font-size: 1rem;
         color: #555;
@@ -129,7 +131,7 @@ export default {
         a{
             width: 100%;
             img {
-                width: 75%;
+                width: 100%;
             }
         }
         .share {
