@@ -7,7 +7,7 @@
             <van-image round width="100" height="100" src="https://img.yzcdn.cn/vant/cat.jpeg" />
           </li>
           <li>
-            <span>Richard</span>
+            <span v-text="username"></span>
             <br />
             <span>已经绑定微信</span>
           </li>
@@ -113,7 +113,8 @@ export default {
           icon: "ellipsis",
           name: "设置"
         }
-      ]
+      ],
+      username:localStorage.getItem('username')
     };
   }
 };

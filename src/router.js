@@ -62,7 +62,7 @@ const router = new Router({
           component: Home.components.Zgouwuche,
           //进入购物车的路由守卫，若有登录，则允许进入。若没有登录，则推去login路由
           beforeEnter: function(to,from,next){
-            let isLogin = 0
+            let isLogin = localStorage.getItem('isLogin');
             if(isLogin){
               next()
             }else{
@@ -78,7 +78,7 @@ const router = new Router({
           component: Home.components.Zgeren,
           //进入个人的路由守卫，若有登录，则允许进入。若没有登录，则推去login路由
           beforeEnter: function(to,from,next){
-            let isLogin = 1
+            let isLogin = localStorage.getItem('isLogin');
             if(isLogin){
               next()
             }else{
@@ -91,7 +91,7 @@ const router = new Router({
       ]
     },
     {
-      path:'login',
+      path:'/login',
       name:'login',
       component: Login
     },
