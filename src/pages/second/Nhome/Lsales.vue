@@ -2,7 +2,7 @@
   <div>
     <Zsearch :route="1"></Zsearch>
     <!-- 第一层 -->
-    <van-tabs type="card" background="#f3f3f3" color="#4d3126" border="false">
+    <van-tabs type="card" background="#f3f3f3" color="#4d3126" :border="false">
       <van-tab v-for="(item, index) in sales" :key="index" :title="item"></van-tab>
     </van-tabs>
     <!-- 第二层 -->

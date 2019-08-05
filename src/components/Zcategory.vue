@@ -58,17 +58,18 @@ export default {
   async created() {
     let msg;
     //先从store拿数据，如果store没有数据再发起请求
-    if (this.$store.categoryIndex === undefined) {
-      msg = await this.getData("get","http://10.3.132.173:12345/categoryindex");
-      this.$store.categoryIndex = msg;
-    } else {
-      msg = this.$store.categoryIndex;
-    }
-
+    // if (this.$store.categoryIndex === '') {
+    //   msg = await this.getData("get","http://10.3.132.173:12345/categoryindex");
+    //   this.$store.categoryIndex = msg;
+    // } else {
+    //   msg = this.$store.categoryIndex;
+    // }
     //从categoryIndex开始就是可以选择分类了，比如现在的0代表women
     //   console.log(msg.data[0].data.categoryIndex[0].itemCategories)
     //这是宫格里面的资料
+    msg = await this.getData("get","http://10.3.132.173:12345/categoryindex");
     this.grid = msg.data[0].data.categoryIndex[this.index].itemCategories.splice(0,8);
+    // console.log(this.grid)
     // console.log(msg.data[0].data.categoryIndex[this.index].products)
     this.products = msg.data[0].data.categoryIndex[this.index].products;
   },
