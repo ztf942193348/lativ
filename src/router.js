@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-//import axios from 'axios'
 
 import Home from './pages/Home.vue'
 import Login from './pages/Login.vue'
