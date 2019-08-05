@@ -12,13 +12,15 @@ Vue.config.productionTip = false
 //adress 请求地址 String
 //obj为对象包裹的JSON字符串 post请求时才需要填写, 此时请求头为Content-Type: application/json
 import axios from 'axios';
+import qs from 'qs'
 Vue.prototype.getData=(f,address,obj)=>{
   return new Promise(async(resolve)=>{
     let msg 
     if(f==="get"){
        msg = await axios.get(address);
     }else if(f==="post"){
-       msg = await axios.post(address,obj);
+       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+       msg = await axios.post(address,qs.stringify(obj));
     }
     resolve(msg)
   })
