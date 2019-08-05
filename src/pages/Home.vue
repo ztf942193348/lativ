@@ -23,6 +23,7 @@ import Zfenlei from './second/Zfenlei/Zfenlei'
 import Zgouwuche from './second/Zgouwuche/Zgouwuche'
 // 这里是个人
 import Zgeren from './second/Zgeren/Zgeren'
+
 export default {
   components: {
     Zfooter,
