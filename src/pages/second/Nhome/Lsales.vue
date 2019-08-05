@@ -110,6 +110,12 @@ export default {
     }
   }
 }
+.sales-left{
+  float: left;
+}
+.sales-right{
+  float:right;
+}
 .van-row {
   img {
     width: calc(50vw - 1.125rem);
