@@ -86,7 +86,8 @@ export default {
         },
         {
           icon: "like-o",
-          name: "收藏"
+          name: "收藏",
+          route: "/collect"
         },
         {
           icon: "tosend",
@@ -106,7 +107,7 @@ export default {
         {
           icon: "contact",
           name: "客服信息",
-          route:''
+          route:'/client'
         },
         {
           icon: "records",

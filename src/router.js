@@ -6,6 +6,8 @@ import Home from './pages/Home.vue'
 import Login from './pages/Zlogin.vue'
 import Zshezhi from './pages/Zshezhi.vue'
 import Lrizhi from './pages/Lrizhi.vue'
+import Lcollect from './pages/Lcollect.vue'
+import Lclient from './pages/Lclient.vue'
 
 const router = new Router({
   routes: [
@@ -107,6 +109,16 @@ const router = new Router({
       name: 'rizhi',
       component: Lrizhi
     },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: Lcollect
+    },
+    {
+      path: '/client',
+      name: 'client',
+      component: Lclient
+    }
   ]
 })
 
