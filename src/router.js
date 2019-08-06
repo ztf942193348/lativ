@@ -3,8 +3,8 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Home from './pages/Home.vue'
-import Login from './pages/Login.vue'
-
+import Login from './pages/Zlogin.vue'
+import Zshezhi from './pages/Zshezhi.vue'
 
 const router = new Router({
   routes: [
@@ -96,7 +96,11 @@ const router = new Router({
       name:'login',
       component: Login
     },
-    
+    {
+      path:'/shezhi',
+      name:'shezhi',
+      component: Zshezhi
+    },
   ]
 })
 
