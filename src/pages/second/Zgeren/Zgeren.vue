@@ -46,6 +46,7 @@
             :key="idx"
             :icon="value.icon"
             :text="value.name"
+            :to="value.route"
           />
         </van-grid>
       </div>
@@ -99,19 +100,23 @@ export default {
       xia: [
         {
           icon: "notes-o",
-          name: "品牌日志"
+          name: "品牌日志",
+          route:''
         },
         {
           icon: "contact",
-          name: "客服信息"
+          name: "客服信息",
+          route:''
         },
         {
           icon: "records",
-          name: "系统反馈"
+          name: "系统反馈",
+          route:''
         },
         {
           icon: "ellipsis",
-          name: "设置"
+          name: "设置",
+          route:'/shezhi'
         }
       ],
       username:localStorage.getItem('username')

@@ -1,12 +1,7 @@
 <template>
   <div class="wrap">
     <div id="top">
-      <div class="shang">
-        <span @click="to">
-          <van-icon name="arrow-left" size="30" />
-        </span>
-        购物车
-      </div>
+      <Znav :title="`购物车`"></Znav>
       <div class="xia" v-if="isEmpty">
         <div class="content">
           <van-icon name="shopping-cart-o" size="100" />
@@ -17,7 +12,7 @@
         </div>
       </div>
       <div class="bottom" v-else>
-        <van-cell-group style="min-height:500px;margin-top:60px;margin-bottom:100px;background:#eee">
+        <van-cell-group style="min-height:500px;margin-top:40px;margin-bottom:100px;background:#eee">
           <van-cell>
             <div class="goods">
               <div class="left fl">
@@ -83,6 +78,7 @@
   </div>
 </template>
 <script>
+import Znav from '../../../components/Znav'
 export default {
   data() {
     return {
@@ -90,12 +86,13 @@ export default {
     };
   },
   methods: {
-    to() {
-      this.$router.go(-1);
-    },
+    
     onSubmit(){
 
     }
+  },
+  components:{
+    Znav
   }
 };
 </script>
@@ -113,24 +110,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  .shang {
-    background: white;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    right: 0;
-    line-height: 60px;
-    font-size: 20px;
-    height: 60px;
-    // border-bottom: 1px solid #eee;
-    span {
-      line-height: 0;
-      position: absolute;
-      left: 20px;
-      top: 15px;
-    }
-  }
+  
   .xia {
     background: #eee;
     height: 560px;
