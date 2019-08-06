@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="header">
-      <van-icon name="arrow-left" />
-      <span class="msg">優惠活動</span>
-    </div>
+    <Znav :title="`優惠活動`"></Znav>
     <div class="message-list">
       <div class="message">
         <div class="time">2019-08-05 20:29</div>

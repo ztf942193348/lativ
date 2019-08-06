@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="header">
-      <van-icon name="arrow-left" />
-      <span class="msg">消息中心</span>
-    </div>
+    <Znav :title="`消息中心`"></Znav>
     <div class="active">
       <van-coupon-cell
         title="優惠活動                           
