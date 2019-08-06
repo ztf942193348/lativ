@@ -101,7 +101,7 @@ export default {
         {
           icon: "notes-o",
           name: "品牌日志",
-          route:''
+          route:'/rizhi'
         },
         {
           icon: "contact",

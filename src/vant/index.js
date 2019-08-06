@@ -33,6 +33,10 @@ import { Panel } from 'vant';
 import { CouponCell, CouponList } from 'vant';
 //SubmitBar 提交订单栏
 import { SubmitBar } from 'vant';
+//开关
+import { Switch } from 'vant';
+//商品卡片
+import { Card } from 'vant';
 
 export default () => {
     Vue.use(Search);
@@ -52,4 +56,6 @@ export default () => {
     Vue.use(Panel);
     Vue.use(CouponCell).use(CouponList);
     Vue.use(SubmitBar);
+    Vue.use(Switch);
+    Vue.use(Card);
 }

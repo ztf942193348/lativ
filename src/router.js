@@ -5,6 +5,7 @@ Vue.use(Router)
 import Home from './pages/Home.vue'
 import Login from './pages/Zlogin.vue'
 import Zshezhi from './pages/Zshezhi.vue'
+import Lrizhi from './pages/Lrizhi.vue'
 
 const router = new Router({
   routes: [
@@ -100,6 +101,11 @@ const router = new Router({
       path:'/shezhi',
       name:'shezhi',
       component: Zshezhi
+    },
+    {
+      path: '/rizhi',
+      name: 'rizhi',
+      component: Lrizhi
     },
   ]
 })

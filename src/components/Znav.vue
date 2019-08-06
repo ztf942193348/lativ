@@ -25,9 +25,9 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  line-height: 40px;
+  line-height: 50px;
   font-size: 16px;
-  height: 40px;
+  height: 50px;
   // border-bottom: 1px solid #eee;
   span {
     line-height: 0;
