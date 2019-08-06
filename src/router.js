@@ -4,7 +4,14 @@ Vue.use(Router)
 
 import Home from './pages/Home.vue'
 import Login from './pages/Login.vue'
-
+//分类
+import Zfenlei from './pages/second/Zfenlei/Zfenlei'
+//全部商品
+import Allgoods from './pages/Allgoods.vue'
+//秋季新品
+import Newgoods from './pages/Newgoods.vue'
+//详细分类
+import Ncategory from './pages/Ncategory.vue'
 const router = new Router({
   routes: [
     //重定向
@@ -43,14 +50,9 @@ const router = new Router({
         },
         // 这里开始是下面footer的路由
         {
-          path: 'fenlei',
+          path: 'fenlei/:aa',
           name: 'fenlei',
-          component: Home.components.fenlei,
-        },
-        {
-          path: 'jingxuan',
-          name: 'jingxuan',
-          component: Home.components.Ngood,
+          component: Zfenlei,
         },
         {
           path: 'gouwuche',
@@ -79,7 +81,25 @@ const router = new Router({
       path:'login',
       name:'login',
       component: Login
-    }
+    },
+    {
+      path:'allgoods',
+      name:'allgoods',
+      component:Allgoods
+    },
+    { path: '/allgoods', redirect: { name: 'allgoods' } },
+    {
+      path:'newgoods',
+      name:'newgoods',
+      component:Newgoods
+    },
+    { path: '/newgoods', redirect: { name: 'newgoods' } },
+    {
+      path:'category',
+      name:'category',
+      component:Ncategory
+    },
+    { path: '/category', redirect: { name: 'category' } },
   ]
 })
 

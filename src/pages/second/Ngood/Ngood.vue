@@ -67,18 +67,19 @@ export default {
 </script>
 <style scoped lang="scss">
 #hd_title{
-    margin: 0;
-    width: 75%;
+    width: calc(100% - 1.5rem);
     height: 2.375rem;
     line-height: 3.125rem;
     padding: .375rem .75rem;
     background-color: #fff;
+    position: fixed;
+    top:0;
     z-index: 99;
     font-size: 0;
     border-bottom: 1px solid #eee;
     .title {
         position: absolute;
-        width: 50%;
+        width: 74%;
         top: 0;
         left: 13%;
         text-align: center;
@@ -96,7 +97,7 @@ export default {
 }
 .van-list{
     position: relative;
-    padding: 10px 0 90px;
+    padding: 70px 0 90px;
     font-family: Arial,"Microsoft JhengHei";
     background-color: white;
     font-size: 100%;
@@ -129,7 +130,7 @@ export default {
         a{
             width: 100%;
             img {
-                width: 75%;
+                width:100%;
             }
         }
         .share {
@@ -140,6 +141,9 @@ export default {
                 margin: 0 1rem 0 0;
             }
         }
+    }
+    .van-cell::after{
+        border-bottom:none;
     }
 }
 
