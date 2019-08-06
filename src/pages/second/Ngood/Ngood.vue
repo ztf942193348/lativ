@@ -67,7 +67,12 @@ export default {
 </script>
 <style scoped lang="scss">
 #hd_title{
+<<<<<<< HEAD
     width: calc(100% - 1.5rem);
+=======
+    margin: 0;
+    width: 100%;
+>>>>>>> dev
     height: 2.375rem;
     line-height: 3.125rem;
     padding: .375rem .75rem;
@@ -77,11 +82,13 @@ export default {
     z-index: 99;
     font-size: 0;
     border-bottom: 1px solid #eee;
+    position: fixed;
+    top:0;
     .title {
         position: absolute;
         width: 74%;
         top: 0;
-        left: 13%;
+        left: 22%;
         text-align: center;
         font-size: 1rem;
         color: #555;
@@ -130,7 +137,11 @@ export default {
         a{
             width: 100%;
             img {
+<<<<<<< HEAD
                 width:100%;
+=======
+                width: 100%;
+>>>>>>> dev
             }
         }
         .share {

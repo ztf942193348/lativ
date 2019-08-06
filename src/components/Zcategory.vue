@@ -10,17 +10,17 @@
         <van-image
           width="45"
           height="45"
-          src="https://s4.lativ.com.tw/m/i/LevelThreePicture/Tshirt-POLO/short-sleeves/3490102_360.jpg"
+          src="https://s2.lativ.com.tw/m/images/assets/icons/icon_allproduct.svg"
         />
-        <span style="font-size:12px">文字</span>
+        <span style="font-size:12px">全部商品</span>
       </van-grid-item>
       <van-grid-item>
         <van-image
           width="45"
           height="45"
-          src="https://s4.lativ.com.tw/m/i/LevelThreePicture/Tshirt-POLO/short-sleeves/3490102_360.jpg"
+          src="https://s3.lativ.com.tw/m/images/assets/icons/icon_more_category.svg"
         />
-        <span style="font-size:12px">文字</span>
+        <span style="font-size:12px">更多分类</span>
       </van-grid-item>
     </van-grid>
     <!-- 分隔线 -->
@@ -58,17 +58,18 @@ export default {
   async created() {
     let msg;
     //先从store拿数据，如果store没有数据再发起请求
-    if (this.$store.categoryIndex === undefined) {
-      msg = await this.getData("get","http://10.3.132.173:12345/categoryindex");
-      this.$store.categoryIndex = msg;
-    } else {
-      msg = this.$store.categoryIndex;
-    }
-
+    // if (this.$store.categoryIndex === '') {
+    //   msg = await this.getData("get","http://10.3.132.173:12345/categoryindex");
+    //   this.$store.categoryIndex = msg;
+    // } else {
+    //   msg = this.$store.categoryIndex;
+    // }
     //从categoryIndex开始就是可以选择分类了，比如现在的0代表women
     //   console.log(msg.data[0].data.categoryIndex[0].itemCategories)
     //这是宫格里面的资料
+    msg = await this.getData("get","http://10.3.132.173:12345/categoryindex");
     this.grid = msg.data[0].data.categoryIndex[this.index].itemCategories.splice(0,8);
+    // console.log(this.grid)
     // console.log(msg.data[0].data.categoryIndex[this.index].products)
     this.products = msg.data[0].data.categoryIndex[this.index].products;
   },

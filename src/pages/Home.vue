@@ -14,14 +14,16 @@ import Zman from "./second/Nhome/Zman";
 import Zkids from "./second/Nhome/Zkids";
 import Zbaby from "./second/Nhome/Zbaby";
 import Zsports from "./second/Nhome/Zsports";
+import Lsales from './second/Nhome/Lsales'
 // 这里是精选
 import Ngood from './second/Ngood/Ngood'
 // 这里是分类
-import Ncategory from './second/Zfenlei/Zfenlei'
+import Zfenlei from './second/Zfenlei/Zfenlei'
 // 这里是购物车
 import Zgouwuche from './second/Zgouwuche/Zgouwuche'
 // 这里是个人
 import Zgeren from './second/Zgeren/Zgeren'
+
 export default {
   components: {
     Zfooter,
@@ -33,8 +35,9 @@ export default {
     Zsports,
     Ngood,
     Zgouwuche,
-    Ncategory,
-    Zgeren
+    Zfenlei,
+    Zgeren,
+    Lsales
   }
 };
 </script>

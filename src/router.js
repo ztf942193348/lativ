@@ -3,7 +3,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Home from './pages/Home.vue'
-import Login from './pages/Login.vue'
 //分类
 import Zfenlei from './pages/second/Zfenlei/Zfenlei'
 //全部商品
@@ -12,13 +11,19 @@ import Allgoods from './pages/Allgoods.vue'
 import Newgoods from './pages/Newgoods.vue'
 //详细分类
 import Ncategory from './pages/Ncategory.vue'
+import Login from './pages/Zlogin.vue'
+import Zshezhi from './pages/Zshezhi.vue'
+import Lrizhi from './pages/Lrizhi.vue'
+import Lcollect from './pages/Lcollect.vue'
+import Lclient from './pages/Lclient.vue'
+
 const router = new Router({
   routes: [
     //重定向
     { path: '/', redirect: { name: 'main' } },
     //一层路由
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
       //嵌套路由(二层)
@@ -28,6 +33,10 @@ const router = new Router({
           name: 'main',
           component: Home.components.Nhome
         },{
+          path: 'sales',
+          name: 'sales',
+          component: Home.components.Lsales
+        }, {
           path: 'women',
           name: 'women',
           component: Home.components.Zwomen
@@ -58,9 +67,9 @@ const router = new Router({
           path: 'gouwuche',
           name: 'gouwuche',
           component: Home.components.Zgouwuche,
-          //进入购物车的路由守卫，若有登录，则允许进入。若没有登录，则推去sign路由
+          //进入购物车的路由守卫，若有登录，则允许进入。若没有登录，则推去login路由
           beforeEnter: function(to,from,next){
-            let isLogin = 0
+            let isLogin = localStorage.getItem('isLogin');
             if(isLogin){
               next()
             }else{
@@ -74,11 +83,22 @@ const router = new Router({
           path: 'geren',
           name: 'geren',
           component: Home.components.Zgeren,
+          //进入个人的路由守卫，若有登录，则允许进入。若没有登录，则推去login路由
+          beforeEnter: function(to,from,next){
+            let isLogin = localStorage.getItem('isLogin');
+            if(isLogin){
+              next()
+            }else{
+              router.push({
+                name:'login'
+              })
+            }
+          }
         }
       ]
     },
     {
-      path:'login',
+      path:'/login',
       name:'login',
       component: Login
     },
@@ -100,6 +120,26 @@ const router = new Router({
       component:Ncategory
     },
     { path: '/category', redirect: { name: 'category' } },
+    {
+      path:'/shezhi',
+      name:'shezhi',
+      component: Zshezhi
+    },
+    {
+      path: '/rizhi',
+      name: 'rizhi',
+      component: Lrizhi
+    },
+    {
+      path: '/collect',
+      name: 'collect',
+      component: Lcollect
+    },
+    {
+      path: '/client',
+      name: 'client',
+      component: Lclient
+    }
   ]
 })
 
