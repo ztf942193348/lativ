@@ -161,7 +161,6 @@ const router = new Router({
       name: 'client',
       component: Lclient
     },
-<<<<<<< HEAD
     //消息
     {
       path:'/message',
@@ -179,7 +178,8 @@ const router = new Router({
       path:'/detail/:id/:idx',
       name:'detail',
       component: Zdetail
-=======
+    },
+    //优惠券
     {
       path: '/coupon',
       name: 'coupon',
@@ -189,7 +189,6 @@ const router = new Router({
       path: '/myorder',
       name: 'myorder',
       component: Lmyorder
->>>>>>> Luo
     }
   ]
 })

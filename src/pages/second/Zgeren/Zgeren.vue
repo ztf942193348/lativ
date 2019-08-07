@@ -24,6 +24,7 @@
             :key="idx"
             :icon="value.icon"
             :text="value.name"
+            :to="value.route"
           />
         </van-grid>
       </div>
@@ -36,6 +37,7 @@
             :key="idx"
             :icon="value.icon"
             :text="value.name"
+            :to="value.route"
           />
         </van-grid>
       </div>
@@ -97,11 +99,13 @@ export default {
         },
         {
           icon: "tosend",
-          name: "到货提醒"
+          name: "到货提醒",
+          route: ""
         },
         {
           icon: "location-o",
-          name: "地址"
+          name: "地址",
+          route:""
         }
       ],
       xia: [
