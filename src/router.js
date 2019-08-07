@@ -3,8 +3,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Home from './pages/Home.vue'
-//分类
-import Zfenlei from './pages/second/Zfenlei/Zfenlei'
+
 //全部商品
 import Allgoods from './pages/Allgoods.vue'
 //秋季新品
@@ -18,16 +17,14 @@ import Lcollect from './pages/Lcollect.vue'
 import Lclient from './pages/Lclient.vue'
 import Lcoupon from './pages/Lcoupon.vue'
 import Lmyorder from './pages/Lmyorder.vue'
-
-
-
+import Search from './pages/Search'
 import Lmessage from './pages/Lmessage'
 import Lactivity from './pages/Lactivity'
 import Zdetail from './pages/Zdetail'
 const router = new Router({
   routes: [
     //重定向
-    { path: '/', redirect: { name: 'main' } },
+    { path: '/', redirect: { name: 'search' } },
     //一层路由
     //Home
     {
@@ -189,6 +186,11 @@ const router = new Router({
       path: '/myorder',
       name: 'myorder',
       component: Lmyorder
+    },
+    {
+      path:'/search',
+      name:'search',
+      component:Search
     }
   ]
 })

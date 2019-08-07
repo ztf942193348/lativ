@@ -54,7 +54,6 @@
   </div>
 </template>
 <script>
-import qs from 'qs'
 
 export default {
   methods: {
@@ -68,12 +67,12 @@ export default {
       if (this.password.trim() != "" && this.username.trim() != "") {
         let status = await this.getData(
           "get",
-          `http://10.3.132.173:12345/regist?username=${this.username}`
+          `http://10.3.132.11:12345/regist?username=${this.username}`
         );
         if (status.data == 1) {
           let msg = await this.getData(
             "post",
-            "http://10.3.132.173:12345/regist",
+            "http://10.3.132.11:12345/regist",
             {
               username: this.username,
               password: this.password
