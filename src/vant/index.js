@@ -33,6 +33,18 @@ import { Panel } from 'vant';
 import { CouponCell, CouponList } from 'vant';
 //SubmitBar 提交订单栏
 import { SubmitBar } from 'vant';
+//详情页底部的商品导航
+import {
+    GoodsAction,
+    GoodsActionIcon,
+    GoodsActionButton
+  } from 'vant';
+//上拉菜单
+import { ActionSheet } from 'vant';
+//进步器- +
+import { Stepper } from 'vant';
+//弹出层
+import { Popup } from 'vant';
 
 export default () => {
     Vue.use(Search);
@@ -52,4 +64,11 @@ export default () => {
     Vue.use(Panel);
     Vue.use(CouponCell).use(CouponList);
     Vue.use(SubmitBar);
+    Vue
+    .use(GoodsAction)
+    .use(GoodsActionIcon)
+    .use(GoodsActionButton);
+    Vue.use(ActionSheet);
+    Vue.use(Stepper);
+    Vue.use(Popup);
 }

@@ -36,7 +36,7 @@
         @load="onLoad"
       >
         <!-- 图片 -->
-        <router-link to class="detail" v-for="(item,idx) in products" :key="idx">
+        <router-link :to="{name:'detail',params:{id:item.sn,idx:index}}" class="detail" v-for="item in products" :key="item.sn">
           <div class="balanceImg">
             <van-image width="170" height="250" :src="item.detailImage" />
             <div class="btm">
@@ -60,7 +60,7 @@ export default {
     //先从store拿数据，如果store没有数据再发起请求
     // if (this.$store.categoryIndex === '') {
     //   msg = await this.getData("get","http://10.3.132.173:12345/categoryindex");
-    //   this.$store.categoryIndex = msg;
+      // this.$store.categoryIndex = msg;
     // } else {
     //   msg = this.$store.categoryIndex;
     // }
@@ -72,6 +72,8 @@ export default {
     // console.log(this.grid)
     // console.log(msg.data[0].data.categoryIndex[this.index].products)
     this.products = msg.data[0].data.categoryIndex[this.index].products;
+    //将数据存入vuex 方便后面点击跳转详情页获取数据
+    this.$store.categoryIndex = msg.data[0].data.categoryIndex[this.index].products
   },
   data() {
     return {

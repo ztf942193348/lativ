@@ -22,9 +22,7 @@
                 <h4>史努比短板T恤-04-女</h4>
                 <p>复古蓝 - 160/84A(M)</p>
                 <div class="amount">
-                  <div class="aleft fl">-</div>
-                  <div class="acenter fl">50</div>
-                  <div class="aright fl">+</div>
+                  <van-stepper v-model="value" min="1" max="50"  integer/>
                 </div>
               </div>
               <div class="right fr">
@@ -38,7 +36,6 @@
               </div>
             </div>
           </van-cell>
-          
           <van-cell>
             <div class="jiesuan">
               <div class="zuo fl">
@@ -70,7 +67,7 @@
               </div>
             </div>
           </van-cell>
-          <van-cell title="继续购物" is-link style="margin-top:10px" />
+          <van-cell :to="{name:'main'}" title="继续购物" is-link style="margin-top:10px" />
         </van-cell-group>
         <van-submit-bar :price="3050" button-text="结算" @submit="onSubmit" />
       </div>
@@ -82,7 +79,8 @@ import Znav from '../../../components/Znav'
 export default {
   data() {
     return {
-      isEmpty: false
+      isEmpty: false,
+      value:1
     };
   },
   methods: {
@@ -162,7 +160,6 @@ export default {
           position: absolute;
           bottom: -60px;
           left: 0;
-          border: 1px solid #ccc;
           .aleft,
           .acenter,
           .aright {

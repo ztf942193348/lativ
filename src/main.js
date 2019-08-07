@@ -20,12 +20,11 @@ Vue.prototype.getData=(f,address,obj)=>{
        msg = await axios.get(address);
     }else if(f==="post"){
        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-       msg = await axios.post(address,qs.stringify(obj));
+       msg = await axios.post(address,obj.goods);
     }
     resolve(msg)
   })
 }
-
 new Vue({
   router,
   store,
