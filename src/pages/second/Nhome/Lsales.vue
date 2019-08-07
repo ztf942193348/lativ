@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Zsearch :route="1"></Zsearch>
+    <Zsearch :route="6"></Zsearch>
     <div class="L">
 <!-- 第一层 -->
     <van-tabs type="card" background="#f3f3f3" color="#4d3126" :border="false">
@@ -47,6 +47,7 @@ import Zsearch from "../../../components/Zsearch";
 export default {
   async created(){
     let msg = await this.getData('get','http://10.3.132.11:12345/list')
+    console.log(msg)
   },
   data() {
     return {

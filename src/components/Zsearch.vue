@@ -40,10 +40,6 @@ export default {
           route: "main"
         },
         {
-          name: "限时特惠",
-          route: "sales"
-        },
-        {
           name: "女装",
           route: "women"
         },
@@ -62,7 +58,11 @@ export default {
         {
           name: "运动",
           route: "sports"
-        }
+        },
+        {
+          name: "限时特惠",
+          route: "sales"
+        },
       ]
     }
   },

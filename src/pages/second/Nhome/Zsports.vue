@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Zsearch :route="6"></Zsearch>
+    <Zsearch :route="5"></Zsearch>
     <Zimage :url="`https://s4.lativ.com.tw/m/i/CategoryIndex/5/40072_1180X557_190219_TW_2.jpg`"></Zimage>
     <Zcategory :index="4"></Zcategory>
 </div>
