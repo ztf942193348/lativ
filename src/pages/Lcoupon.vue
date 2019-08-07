@@ -1,17 +1,26 @@
 <template>
   <div>
-    <Znav :title="`我的收藏`"></Znav>
-    <van-tabs v-model="active" line-width="50%" line-height="2px" color="#4d3126">
-      <van-tab title="收藏商品">
+    <Znav :title="`优惠券`"></Znav>
+    <van-tabs v-model="active" line-width="33.3%" line-height="2px" color="#4d3126">
+      <van-tab title="未使用">
         <div class="content">
-          <van-icon name="like-o" />
-          <p>还没有收藏</p>
+          <van-icon name="gold-coin-o
+" />
+          <p>暂无该类优惠券</p>
         </div>
       </van-tab>
-      <van-tab title="到货提醒">
+      <van-tab title="已使用">
         <div class="content">
-          <van-icon name="logistics" />
-          <p>没有到货提醒商品</p>
+          <van-icon name="gold-coin-o
+" />
+          <p>暂无该类优惠券</p>
+        </div>
+      </van-tab>
+      <van-tab title="已过期">
+        <div class="content">
+          <van-icon name="gold-coin-o
+" />
+          <p>暂无该类优惠券</p>
         </div>
       </van-tab>
     </van-tabs>
@@ -45,5 +54,4 @@ export default {
   }
 }
 </style>
-
 
