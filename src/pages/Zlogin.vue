@@ -54,6 +54,8 @@
   </div>
 </template>
 <script>
+import qs from 'qs'
+
 export default {
   methods: {
     onClick() {
@@ -105,10 +107,24 @@ export default {
         if(status.data===0){
             alert('帐号或密码错误')
         }else{
-            //往sessionStorage存入登录状态为1，以通过路由守卫
+            //往localStorage存入登录状态为1，以通过路由守卫
             localStorage.setItem('isLogin',1);
-            //往sessionStorage存入用户名
+            //往localStorage存入用户名
             localStorage.setItem('username',`${this.username}`);
+            //向后端发起请求,如果有信息返回来就直接把form插入到localStorage
+            let result = await this.getData('get',`http://10.3.132.173:12345/detail?username=${this.username}`)
+            console.log(result)
+            console.log(qs.parse(result))
+            //格式化用户信息，用于存储用户选择的商品
+            let obj = {
+              username:this.username,
+              goods:[]
+            }
+            //因为localStorage只能存储字符串，所以要转化成JSON字符串
+            localStorage.setItem('form',JSON.stringify(obj))
+            //此时from的数据为
+            //{"username":"13113019764","goods":[]}
+            //
             //跳转
             this.$router.go(-1);
         }

@@ -17,22 +17,25 @@ import Lrizhi from './pages/Lrizhi.vue'
 import Lcollect from './pages/Lcollect.vue'
 import Lclient from './pages/Lclient.vue'
 
+
+
+import Lmessage from './pages/Lmessage'
+import Lactivity from './pages/Lactivity'
+import Zdetail from './pages/Zdetail'
 const router = new Router({
   routes: [
     //重定向
-    { path: '/', redirect: { name: 'main' } },
+    { path: '/', redirect: { name: 'detail' } },
     //一层路由
+    //Home
     {
       path: '/home',
       name: 'home',
       component: Home,
       //嵌套路由(二层)
       children: [
+        //隶属于main的 伪三层路由
         {
-          path: 'main',
-          name: 'main',
-          component: Home.components.Nhome
-        },{
           path: 'sales',
           name: 'sales',
           component: Home.components.Lsales
@@ -58,11 +61,25 @@ const router = new Router({
           component: Home.components.Zsports
         },
         // 这里开始是下面footer的路由
+        //首页
+        {
+          path: 'main',
+          name: 'main',
+          component: Home.components.Nhome
+        },
+        //分类
         {
           path: 'fenlei/:aa',
           name: 'fenlei',
-          component: Zfenlei,
+          component: Home.components.Zfenlei,
         },
+        //精选
+        {
+          path: 'jingxuan',
+          name: 'jingxuan',
+          component: Home.components.Ngood,
+        },
+        //购物车
         {
           path: 'gouwuche',
           name: 'gouwuche',
@@ -79,6 +96,7 @@ const router = new Router({
             }
           }
         },
+        //个人
         {
           path: 'geren',
           name: 'geren',
@@ -97,11 +115,13 @@ const router = new Router({
         }
       ]
     },
+    //注册登录页
     {
       path:'/login',
       name:'login',
       component: Login
     },
+    
     {
       path:'allgoods',
       name:'allgoods',
@@ -114,17 +134,21 @@ const router = new Router({
       component:Newgoods
     },
     { path: '/newgoods', redirect: { name: 'newgoods' } },
+
     {
-      path:'category',
+      path:'/category',
       name:'category',
       component:Ncategory
     },
     { path: '/category', redirect: { name: 'category' } },
+
+    //设置
     {
       path:'/shezhi',
       name:'shezhi',
       component: Zshezhi
     },
+    //分界线
     {
       path: '/rizhi',
       name: 'rizhi',
@@ -139,6 +163,24 @@ const router = new Router({
       path: '/client',
       name: 'client',
       component: Lclient
+    },
+    //消息
+    {
+      path:'/message',
+      name:'message',
+      component: Lmessage
+    },
+    //消息->活动
+    {
+      path:'/activity',
+      name:'activity',
+      component: Lactivity
+    },
+    //详情页
+    {
+      path:'/detail/:id/:idx',
+      name:'detail',
+      component: Zdetail
     }
   ]
 })

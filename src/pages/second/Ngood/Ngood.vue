@@ -67,12 +67,9 @@ export default {
 </script>
 <style scoped lang="scss">
 #hd_title{
-<<<<<<< HEAD
     width: calc(100% - 1.5rem);
-=======
-    margin: 0;
-    width: 100%;
->>>>>>> dev
+    // margin: 0;
+    // width: 100%;
     height: 2.375rem;
     line-height: 3.125rem;
     padding: .375rem .75rem;
@@ -137,11 +134,7 @@ export default {
         a{
             width: 100%;
             img {
-<<<<<<< HEAD
                 width:100%;
-=======
-                width: 100%;
->>>>>>> dev
             }
         }
         .share {

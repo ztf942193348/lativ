@@ -7,8 +7,8 @@
             <van-tab v-for="(item,index) in categoods.subCategory.details" :title="item.name" :key="index">
               <van-grid :border="false" :column-num="2">
                 <van-grid-item
-                  v-for="value in categoods.products"
-                      :key="value"     
+                  v-for="(value,idx) in categoods.products"
+                      :key="idx"     
                 >
                 <van-image :src="value.image"/>
                 <ul>

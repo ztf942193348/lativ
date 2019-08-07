@@ -6,9 +6,11 @@
           v-model="value"
           placeholder="请输入搜索关键词"
           show-action
+          shape="round"
           @search="onSearch"
-          @cancel="onCancel"
-        />
+        >
+          <div slot="action" @click="to">消息</div>
+        </van-search>
       </form>
       <div class="ul">
         <ul>
@@ -62,11 +64,14 @@ export default {
           route: "sports"
         }
       ]
-    };
+    }
   },
   methods: {
     onSearch() {},
     onCancel() {},
+    to(){
+      this.$router.push('/message')
+    },
     change(idx) {
       this.activeIdx = idx;
     }

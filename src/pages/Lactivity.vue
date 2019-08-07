@@ -30,35 +30,14 @@
   </div>
 </template>
 <script>
-export default {};
+import Znav from '../components/Znav'
+export default {
+  components:{
+    Znav
+  }
+};
 </script>
 <style scoped lang="scss">
-.header {
-  width: 375px;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1501;
-  background: #fff;
-  .van-icon-arrow-left {
-    float: left;
-    line-height: 50px;
-    padding-left: 20px;
-    font-size: 24px;
-  }
-  .msg {
-    position: absolute;
-    top: 0;
-    left: 43%;
-    text-align: center;
-    font-size: 1rem;
-    color: #555;
-    margin: 0;
-    line-height: 3.125rem;
-    font-weight: 400;
-  }
-}
 .message-list {
   min-height: calc(100vh - 4.063rem);
   padding: 3.125rem 0 0.938rem;
