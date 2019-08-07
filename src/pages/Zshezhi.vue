@@ -11,7 +11,7 @@
       <van-cell title="lativ隐私声明" is-link to="index" />
       <van-cell title="APP版本 1.40" value="检查更新" />
       <van-cell title="清除缓存" value="0.0M" />
-      <van-button type="default">退出登录</van-button>
+      <van-button type="default" @click="logout">退出登录</van-button>
     </van-cell-group>
   </div>
 </template>
@@ -21,6 +21,14 @@ export default {
   data() {
     return {
       checked: true
+    }
+  },
+  methods:{
+    logout(){
+      localStorage.removeItem("username")
+      localStorage.removeItem("isLogin")
+      alert('退出登录成功')
+      this.$router.push({name:'main'})
     }
   },
   components: {

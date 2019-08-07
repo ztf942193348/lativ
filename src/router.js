@@ -25,7 +25,7 @@ import Zdetail from './pages/Zdetail'
 const router = new Router({
   routes: [
     //重定向
-    { path: '/', redirect: { name: 'detail' } },
+    { path: '/', redirect: { name: 'main' } },
     //一层路由
     //Home
     {
@@ -121,27 +121,22 @@ const router = new Router({
       name:'login',
       component: Login
     },
-    
+
     {
-      path:'allgoods',
+      path:'/allgoods',
       name:'allgoods',
       component:Allgoods
     },
-    { path: '/allgoods', redirect: { name: 'allgoods' } },
     {
-      path:'newgoods',
+      path:'/newgoods',
       name:'newgoods',
       component:Newgoods
     },
-    { path: '/newgoods', redirect: { name: 'newgoods' } },
-
     {
       path:'/category',
       name:'category',
       component:Ncategory
     },
-    { path: '/category', redirect: { name: 'category' } },
-
     //设置
     {
       path:'/shezhi',
