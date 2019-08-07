@@ -60,29 +60,35 @@ export default {
       value: [
         {
           icon: "gold-coin-o",
-          name: "待付款"
+          name: "待付款",
+          route: "/myorder"
         },
         {
           icon: "sign",
-          name: "待发货"
+          name: "待发货",
+          route: "/myorder"
         },
         {
           icon: "send-gift-o",
-          name: "待收货"
+          name: "待收货",
+          route: "/myorder"
         },
         {
           icon: "other-pay",
-          name: "待评价"
+          name: "待评价",
+          route: "/myorder"
         },
         {
           icon: "after-sale",
-          name: "退货/退款"
+          name: "退货/退款",
+          route: "/myorder"
         }
       ],
       shang: [
         {
           icon: "coupon-o",
-          name: "优惠券"
+          name: "优惠券",
+          route: "/coupon"
         },
         {
           icon: "like-o",

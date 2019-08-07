@@ -1,17 +1,12 @@
 <template>
   <div>
-    <Znav :title="`我的收藏`"></Znav>
-    <van-tabs v-model="active" line-width="50%" line-height="2px" color="#4d3126">
-      <van-tab title="收藏商品">
+    <Znav :title="`我的订单`"></Znav>
+    <van-tabs v-model="active" line-width="16.6%" line-height="2px" color="#4d3126">
+      <van-tab v-for="(item, index) in caption" :key="index" :title="item">
         <div class="content">
-          <van-icon name="like-o" />
-          <p>还没有收藏</p>
-        </div>
-      </van-tab>
-      <van-tab title="到货提醒">
-        <div class="content">
-          <van-icon name="logistics" />
-          <p>没有到货提醒商品</p>
+          <van-icon name="description
+" />
+          <p>还没有相关的订单</p>
         </div>
       </van-tab>
     </van-tabs>
@@ -22,7 +17,8 @@ import Znav from "../components/Znav";
 export default {
   data() {
     return {
-      active: 0
+      active: 0,
+      caption: ["待付款", "待发货", "待收货", "待评价", "退货/退款", "全部"]
     };
   },
   components: {
@@ -45,5 +41,3 @@ export default {
   }
 }
 </style>
-
-

@@ -16,6 +16,8 @@ import Zshezhi from './pages/Zshezhi.vue'
 import Lrizhi from './pages/Lrizhi.vue'
 import Lcollect from './pages/Lcollect.vue'
 import Lclient from './pages/Lclient.vue'
+import Lcoupon from './pages/Lcoupon.vue'
+import Lmyorder from './pages/Lmyorder.vue'
 
 
 
@@ -164,6 +166,7 @@ const router = new Router({
       name: 'client',
       component: Lclient
     },
+<<<<<<< HEAD
     //消息
     {
       path:'/message',
@@ -181,6 +184,17 @@ const router = new Router({
       path:'/detail/:id/:idx',
       name:'detail',
       component: Zdetail
+=======
+    {
+      path: '/coupon',
+      name: 'coupon',
+      component: Lcoupon
+    },
+    {
+      path: '/myorder',
+      name: 'myorder',
+      component: Lmyorder
+>>>>>>> Luo
     }
   ]
 })

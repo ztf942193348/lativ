@@ -30,10 +30,11 @@ export default {
 </script>
 <style scoped lang="scss">
 .van-cell-group {
+  width: 100%;
   margin-top: 50px;
   position: fixed;
   .va-cell {
-    width: 375px;
+    width: 100%;
     padding: 13px 16px;
   }
   .van-cell__title { 
@@ -41,7 +42,7 @@ export default {
   }
   .van-button {
     display: block;
-    width: 375px;
+    width: 100%;
     height: 50px;
     margin-top: 10px;
   }
