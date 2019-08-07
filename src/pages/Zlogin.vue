@@ -96,7 +96,7 @@ export default {
       if (this.username.trim() != "" && this.password.trim() != "") {
         let status = await this.getData(
           "post",
-          'http://10.3.132.173:12345/login',
+          'http://10.3.132.11:12345/login',
           {
               username: this.username,
               password: this.password
@@ -111,22 +111,8 @@ export default {
             localStorage.setItem('isLogin',1);
             //往localStorage存入用户名
             localStorage.setItem('username',`${this.username}`);
-            //向后端发起请求,如果有信息返回来就直接把form插入到localStorage
-            let result = await this.getData('get',`http://10.3.132.173:12345/detail?username=${this.username}`)
-            console.log(result)
-            console.log(qs.parse(result))
-            //格式化用户信息，用于存储用户选择的商品
-            let obj = {
-              username:this.username,
-              goods:[]
-            }
-            //因为localStorage只能存储字符串，所以要转化成JSON字符串
-            localStorage.setItem('form',JSON.stringify(obj))
-            //此时from的数据为
-            //{"username":"13113019764","goods":[]}
-            //
             //跳转
-            this.$router.go(-1);
+            this.$router.push({name:'main'});
         }
       }
     }

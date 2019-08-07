@@ -52,7 +52,7 @@ export default {
         Zfooter,
     },
     async created(){
-        let poilist = await this.getData('get',"http://10.3.132.173:12345/focus");
+        let poilist = await this.getData('get',"http://10.3.132.11:12345/focus");
         this.goodList = [...this.goodList,...poilist.data[0].data];
         // console.log(poilist.data[0].data);
         // 加载状态结束

@@ -8,29 +8,29 @@
           <br />
           <span>您的购物车中没有商品</span>
           <br />
-          <van-button hairline type="default" round>去购物</van-button>
+          <van-button hairline type="default" round to="/home/main">去购物</van-button>
         </div>
       </div>
       <div class="bottom" v-else>
         <van-cell-group style="min-height:500px;margin-top:40px;margin-bottom:100px;background:#eee">
           <van-cell>
-            <div class="goods">
+            <div class="goods" v-for="item in information" :key="item.id">
               <div class="left fl">
-                <van-image width="100" height="100" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                <van-image width="100" height="100" :src="item.url" />
               </div>
               <div class="center fl">
-                <h4>史努比短板T恤-04-女</h4>
+                <h4>{{item.name}}</h4>
                 <p>复古蓝 - 160/84A(M)</p>
                 <div class="amount">
-                  <van-stepper v-model="value" min="1" max="50"  integer/>
+                  <van-stepper @change="onChange(item.num,item.id)" v-model="item.num" min="1" max="50"  integer/>
                 </div>
               </div>
               <div class="right fr">
                 <ul>
-                  <li class="price">￥11</li>
-                  <li class="o-price">￥49</li>
+                  <li class="price">￥{{item.price}}</li>
+                  <!-- <li class="o-price">￥49</li> -->
                   <li class="x">
-                    <van-icon name="cross" />
+                    <van-icon name="cross" @click="Delete(item.id)"/>
                   </li>
                 </ul>
               </div>
@@ -42,7 +42,7 @@
                 <ul>
                   <li class="gong">
                     共
-                    <span>51</span> 件商品
+                    <span>{{length}}</span> 件商品
                   </li>
                   <li class="manjian">满49元免邮</li>
                 </ul>
@@ -53,7 +53,7 @@
                     <div class="fl">金额</div>
                     <div class="fr">
                       <i>￥</i>
-                      <span>2,461</span>
+                      <span>{{total}}</span>
                     </div>
                   </li>
                   <li>
@@ -69,7 +69,7 @@
           </van-cell>
           <van-cell :to="{name:'main'}" title="继续购物" is-link style="margin-top:10px" />
         </van-cell-group>
-        <van-submit-bar :price="3050" button-text="结算" @submit="onSubmit" />
+        <van-submit-bar :price="this.total*100" button-text="结算" @submit="onSubmit" />
       </div>
     </div>
   </div>
@@ -77,18 +77,60 @@
 <script>
 import Znav from '../../../components/Znav'
 export default {
+  async created(){
+      let username = localStorage.getItem('username')
+      let msg = await this.getData('get',`http://10.3.132.11:12345/detail?username=${username}`)
+      // console.log(msg.data)
+      this.information=msg.data;
+      // console.log(this.information)
+  },
   data() {
     return {
-      isEmpty: false,
-      value:1
+      // isEmpty: false,
+      // value:1,
+      information:[]
     };
   },
-  methods: {
-    
-    onSubmit(){
-
+  computed:{
+    isEmpty(){
+      return this.information.length==0?true:false
+    },
+    length(){
+      return this.information.length
+    },
+    total(){
+      let price=0
+      this.information.forEach((item)=>{
+        price+=Number(item.price)*Number(item.num)
+      })
+      return price
     }
   },
+  methods: {
+    onSubmit(){
+    },
+    async Delete(id){
+      console.log(id)
+      let username = localStorage.getItem('username')
+      let msg = await this.getData('get',`http://10.3.132.11:12345/gouwuche?username=${username}&id=${id}`)
+      this.$router.go(0)
+    },
+    async onChange(val,id){
+      console.log(val,id)
+      let username = localStorage.getItem('username')
+        let obj = {
+          username,
+          id,
+          num:val
+        }
+        let e = await this.getData('post','http://10.3.132.11:12345/gouwuche',obj)
+    }
+  },
+  // watch:{
+  //   information(val){
+
+  //   }
+  // },
   components:{
     Znav
   }

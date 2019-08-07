@@ -91,7 +91,7 @@
               <van-stepper v-model="amount" min="0" max="50" />
             </li>
           </ul>
-          <van-cell value="确定" :to="{name:'gouwuche'}" style="background:#4d3126" @click="change" />
+          <van-cell value="确定"  style="background:#4d3126" @click="sure" />
         </div>
       </div>
     </van-action-sheet>
@@ -106,7 +106,7 @@ export default {
     //根据传过来的商品id遍历数组取得相应的详细信息
     let msg = await this.getData(
       "get",
-      "http://10.3.132.173:12345/categoryindex"
+      "http://10.3.132.11:12345/categoryindex"
     );
     msg = msg.data[0].data.categoryIndex[this.$route.params.idx].products;
     this.informantion = msg.filter(
@@ -133,12 +133,35 @@ export default {
       show: false,
       amount: 0,
       tan: false,
-      informantion: {}
+      informantion: {},
+      //节流状态
+      loaded: false,
+      //存入商品信息的对象
+      obj:{}
     };
   },
   methods: {
-    change() {
+    change(){
       this.show = !this.show;
+    },
+    async sure() {
+      let username = localStorage.getItem('username')
+      if(username){
+      this.obj = {
+          username,
+          id:this.$route.params.id,
+          num:this.amount,
+          url:this.informantion.detailImage,
+          price:this.informantion.price,
+          name:this.informantion.name
+        }
+      let e = await this.getData('post','http://10.3.132.11:12345/detail',this.obj)      
+      alert('加入购物车成功')
+      this.show = !this.show
+      }else{
+        alert('请先登录！')
+        this.$router.push({name:'login'})
+      }
     },
     showPopup() {
       this.tan = !this.tan;
@@ -146,55 +169,36 @@ export default {
   },
   components: {
     Znav
-  },
-  watch: {
-    //监听数据变化 val是新变化的数据，oldval是原来的数据
-    //监听什么数据，函数名就是什么
-    async amount(val) {
-      // console.log(val,oldval)
-      //先把form里的goods数据拿出来,并格式化
-      let goods = JSON.parse(localStorage.getItem("form")).goods;
-      // console.log(msg)
-      
-      //以下是form数据的样子
-      // goods: [{id: "43024011", num: 5}, {id: "43555011", num: 1}]
-      // username: "13113019764"
-      
-      //遍历数组，查看是否有该商品的id，如果有就在原有商品改变数量
-      //如果没有就创建一个新的对象
-      //对goods进行filter处理，如果返回值为1，则在原有商品对象改变数量
-      //返回值为0，就创建一个新的对象并且插入
-      let i;
-      let obj;
-      let arr = goods.filter((item,idx) => {
-        i=idx
-        return item.id === this.$route.params.id
-        });
-      // console.log(arr.length,typeof arr.length)
-      // console.log(msg)
-      if (arr.length === 1) {
-        goods[i].num=val
-        obj = {
-          username:localStorage.getItem('username'),
-          goods
-        }
-        // console.log(i)
-      } else {
-        goods.push({
-          id: this.$route.params.id,
-          num: val
-        });
-        obj = {
-          username:localStorage.getItem('username'),
-          goods
-        }
-        // console.log(msg)
-      }
-      console.log(obj.goods)
-     let e = await this.getData('post','http://10.3.132.173:12345/detail',obj)
-        localStorage.setItem("form",JSON.stringify(obj))
-    }
   }
+  // watch: {
+  //   //监听数据变化 val是新变化的数据，oldval是原来的数据
+  //   //监听什么数据，函数名就是什么
+  //   amount(val) {
+  //   // 监听amount数据变化，如果有变化就触发以下函数
+  //   // 节流，避免数据库还未来得及更新数据就插入数据
+  //   // 数量加减操作后过一秒钟再改变loaded状态
+  //   this.loaded=false;
+  //     setTimeout(()=>{
+  //       let username = localStorage.getItem('username')
+  //       this.obj = {
+  //         username,
+  //         id:this.$route.params.id,
+  //         num:val,
+  //         url:this.informantion.detailImage,
+  //         price:this.informantion.price,
+  //         name:this.informantion.name
+  //       }
+  //       //改变loaded状态
+  //       this.loaded=true;
+  //     },1000)
+  //   },
+  //   async loaded(val){
+  //     //根据改变的loaded状态来向后台发起请求
+  //     if(val===true){
+  //     let e = await this.getData('post','http://10.3.132.11:12345/detail',this.obj)
+  //     }
+  //   }
+  // }
 };
 </script>
 <style lang="scss" scoped>
