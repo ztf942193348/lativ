@@ -1,7 +1,8 @@
 <template>
   <div>
     <Zsearch :route="1"></Zsearch>
-    <!-- 第一层 -->
+    <div class="L">
+<!-- 第一层 -->
     <van-tabs type="card" background="#f3f3f3" color="#4d3126" :border="false">
       <van-tab v-for="(item, index) in sales" :key="index" :title="item"></van-tab>
     </van-tabs>
@@ -38,11 +39,15 @@
         </van-row>
       </van-col>
     </div>
+    </div>
   </div>
 </template>
 <script>
 import Zsearch from "../../../components/Zsearch";
 export default {
+  async created(){
+    let msg = await this.getData('get','http://10.3.132.11:12345/list')
+  },
   data() {
     return {
       active: 0,
@@ -109,6 +114,9 @@ export default {
       }
     }
   }
+}
+.L{
+  overflow: hidden;
 }
 .sales-left{
   float: left;

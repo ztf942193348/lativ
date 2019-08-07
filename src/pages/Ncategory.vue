@@ -1,35 +1,43 @@
 <template>
-    <div>
-        <van-nav-bar :title="categoods.subCategory.name" left-arrow>
-        <van-icon name="user-o" slot="right" />
-        </van-nav-bar>
-        <van-tabs v-model="active" swipeable>
-            <van-tab v-for="(item,index) in categoods.subCategory.details" :title="item.name" :key="index">
-              <van-grid :border="false" :column-num="2">
-                <van-grid-item
-                  v-for="(value,idx) in categoods.products"
-                      :key="idx"     
-                >
-                <van-image :src="value.image"/>
-                <ul>
-                  <li v-for="(size,ind) in value.details[0].sizes" :key="ind" v-text="size.key">
-                  </li>
-                </ul>
-                <p v-text="value.name" style="overflow: hidden;    height: 18px;"></p>
-                <p><span v-text="`$${value.price}`"></span><del  style="margin-left:10px;font-size:14px;color: #ccc;" v-text="`$${value.originPrice}`"></del></p>
-                </van-grid-item>
-            </van-grid>
-            </van-tab>
-        </van-tabs>
-    </div>
+  <div>
+    <van-nav-bar :title="(cateindex.name)" left-arrow @click-left="onClickLeft">
+      <van-icon name="user-o" slot="right" />
+    </van-nav-bar>
+    <van-tabs v-model="active" swipeable color="#4d3126">
+      <van-tab v-for="(item,index) in cateindex.details" :title="(item.name)" :key="index">
+        <van-grid :border="false" :column-num="2">
+          <van-grid-item v-for="(value,idx) in categoods.products" :key="idx" :to="{name:'detail',params: { id:44239012 }}">
+            
+            <van-image :src="value.image" />
+            <ul>
+              <li v-for="(size,ind) in value.details[0].sizes" :key="ind" v-text="size.key"></li>
+            </ul>
+            <p v-text="(value.name)" style="overflow: hidden;    height: 18px;"></p>
+            <p>
+              <span v-text="`$${value.price}`"></span>
+              <del
+                style="margin-left:10px;font-size:14px;color: #ccc;"
+                v-text="`$${value.originPrice}`"
+              ></del>
+            </p>
+          </van-grid-item>
+        </van-grid>
+      </van-tab>
+    </van-tabs>
+  </div>
 </template>
 <script>
 export default {
+  methods: {
+    onClickLeft() {
+      this.$router.go(-1);
+    }
+  },
   data() {
     return {
       active: 0,
-      categoods: null,
-      // cateindex:null
+      categoods: "",
+      cateindex: ""
     };
   },
   async created() {
@@ -37,29 +45,29 @@ export default {
       "get",
       "https://www.easy-mock.com/mock/5d402dbd99acfe0359e018a1/elema/subCategory"
     );
-    console.log(goodslist.data);
+    // console.log(goodslist.data);
     this.categoods = goodslist.data;
-    // this.cateindex = goodslist.data.subCategory;
+    this.cateindex = goodslist.data.subCategory;
   }
 };
 </script>
 <style scoped lang="scss">
-.van-tabs{
-    color: #555;
+.van-tabs {
+  color: #555;
 }
-p{
-    font-size: 12px;
-    margin: 10px 0px 0px 0px;
-    span{
-        font-size: 16px;
-    }
+p {
+  font-size: 12px;
+  margin: 10px 0px 0px 0px;
+  span {
+    font-size: 16px;
+  }
 }
-ul{
+ul {
   width: 145px;
   height: 26px;
   margin: 10px auto;
   font-size: 14px;
-  li{
+  li {
     width: 25px;
     height: 14px;
     float: left;

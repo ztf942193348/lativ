@@ -30,18 +30,21 @@
                 :src="cateindex.banner"
                 alt
               />
-              <!-- <router-link :to="{name:'detail',params:{id:}}"></router-link> -->
               <li
                 v-for="(item,index) in cateindex.details"
                 :key="index"
                 style="width: 33.33%;text-align: center;font-size: .688rem; float: left;
                 "
               >
-                <img
+              <router-link :to="{name:'category'}">
+<img
                   style="width: 60%;margin-left: 20%;margin-top: 1.25rem; margin-right: 20%;"
                   :src="item.image"
                   alt
                 />
+              </router-link>
+
+                
                 <font v-text="item.name"></font>
               </li>
             </ul>

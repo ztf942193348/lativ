@@ -3,7 +3,7 @@
         <van-nav-bar title="全部商品" left-arrow @click-left="to">
         <van-icon name="user-o" slot="right" />
         </van-nav-bar>
-        <van-tabs v-model="active" swipeable>
+        <van-tabs v-model="active" swipeable color="#4d3126">
             <van-tab v-for="(item,index) in allgoods" :title="item.categoryName" :key="index">
                 <van-grid :border="false" :column-num="2" >
                 <van-grid-item
@@ -44,7 +44,7 @@ export default {
       "get",
       "https://www.easy-mock.com/mock/5d402dbd99acfe0359e018a1/elema/allgoods"
     );
-    console.log(goodslist.data);
+    // console.log(goodslist.data);
     this.allgoods = goodslist.data;
   }
 };

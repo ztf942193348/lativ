@@ -24,7 +24,7 @@ import Zdetail from './pages/Zdetail'
 const router = new Router({
   routes: [
     //重定向
-    { path: '/', redirect: { name: 'main' } },
+    { path: '/', redirect: { name: 'category' } },
     //一层路由
     //Home
     {

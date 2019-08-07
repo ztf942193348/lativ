@@ -110,20 +110,19 @@ export default {
     onSubmit(){
     },
     async Delete(id){
-      console.log(id)
       let username = localStorage.getItem('username')
-      let msg = await this.getData('get',`http://10.3.132.11:12345/gouwuche?username=${username}&id=${id}`)
+      await this.getData('get',`http://10.3.132.11:12345/gouwuche?username=${username}&id=${id}`)
       this.$router.go(0)
     },
     async onChange(val,id){
-      console.log(val,id)
+      // console.log(val,id)
       let username = localStorage.getItem('username')
         let obj = {
           username,
           id,
           num:val
         }
-        let e = await this.getData('post','http://10.3.132.11:12345/gouwuche',obj)
+        await this.getData('post','http://10.3.132.11:12345/gouwuche',obj)
     }
   },
   // watch:{

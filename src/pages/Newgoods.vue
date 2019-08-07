@@ -3,7 +3,7 @@
         <van-nav-bar title="秋季新品" left-arrow>
         <van-icon name="user-o" slot="right" />
         </van-nav-bar>
-        <van-tabs v-model="active" swipeable>
+        <van-tabs v-model="active" swipeable color="#4d3126">
             <van-tab v-for="(item,index) in allgoods" :title="item.categoryName" :key="index">
                 <van-grid :border="false" :column-num="2">
                 <van-grid-item
