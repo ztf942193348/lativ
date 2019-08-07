@@ -1,7 +1,10 @@
 <template>
   <div class="wrap">
     <form action="/">
-      <van-nav-bar left-arrow>
+      <van-nav-bar>
+        <router-link to="/home/main" slot="left">
+          <van-icon name="arrow-left"  />
+        </router-link>
         <van-search
           v-model="value"
           placeholder="请输入搜索关键词"
@@ -53,7 +56,7 @@ export default {
   computed: {
     search() {
       if (this.value) {
-        return this.namelist.filter((item, idx) => {
+        return this.namelist.filter((item) => {
           return item.name.indexOf(this.value) != -1;
         });
         // return namelist.filter((item)=>{
@@ -64,7 +67,9 @@ export default {
   },
   methods: {
     onSearch() {},
-    onCancel() {},
+    onCancel() {
+      this.$router.go(-1)
+    },
     onLoad() {
       // 异步更新数据
       setTimeout(() => {

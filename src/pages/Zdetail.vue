@@ -109,12 +109,13 @@ export default {
       "http://10.3.132.11:12345/categoryindex"
     );
     // console.log(msg.data[0].data.categoryIndex);
+    //可以通过一步步console.log看看我到底做了什么
     msg = msg.data[0].data.categoryIndex;
     let ca = [];
     for (let i = 0; i < msg.length; i++) {
       ca = [...ca, ...msg[i].products];
     }
-    console.log(ca)
+    // console.log(ca)
     this.informantion = ca.filter((item)=>{
         return item.sn==this.$route.params.id
     })[0]
@@ -161,7 +162,7 @@ export default {
           price:this.informantion.price,
           name:this.informantion.name
         }
-      let e = await this.getData('post','http://10.3.132.11:12345/detail',this.obj)      
+      await this.getData('post','http://10.3.132.11:12345/detail',this.obj)      
       alert('加入购物车成功')
       this.show = !this.show
       }else{
