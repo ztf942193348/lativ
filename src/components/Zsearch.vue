@@ -7,7 +7,7 @@
           placeholder="请输入搜索关键词"
           show-action
           shape="round"
-          @search="onSearch"
+          @click="onSearch"
         >
           <div slot="action" @click="to">消息</div>
         </van-search>
@@ -67,7 +67,9 @@ export default {
     }
   },
   methods: {
-    onSearch() {},
+    onSearch() {
+      this.$router.push({name:'search'})
+    },
     onCancel() {},
     to(){
       this.$router.push('/message')

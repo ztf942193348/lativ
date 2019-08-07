@@ -13,7 +13,7 @@
       </van-nav-bar>
     </form>
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-      <van-cell v-for="(item,idx) in search" :key="idx" :title="item.name" />
+      <van-cell v-for="(item,idx) in search" :key="idx" :title="item.name" :to="{name:'detail',params:{id:item.sn}}"/>
     </van-list>
   </div>
 </template>
@@ -53,11 +53,9 @@ export default {
   computed: {
     search() {
       if (this.value) {
-        let arr = this.namelist.filter((item, idx) => {
+        return this.namelist.filter((item, idx) => {
           return item.name.indexOf(this.value) != -1;
         });
-        console.log(arr)
-        return arr
         // return namelist.filter((item)=>{
         //   return item.indexOf(this.value) != -1;
         // })

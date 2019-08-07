@@ -36,7 +36,7 @@
         @load="onLoad"
       >
         <!-- 图片 -->
-        <router-link :to="{name:'detail',params:{id:item.sn,idx:index}}" class="detail" v-for="item in products" :key="item.sn">
+        <router-link :to="{name:'detail',params:{id:item.sn}}" class="detail" v-for="item in products" :key="item.sn">
           <div class="balanceImg">
             <van-image width="170" height="250" :src="item.detailImage" />
             <div class="btm">

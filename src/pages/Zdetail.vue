@@ -108,10 +108,16 @@ export default {
       "get",
       "http://10.3.132.11:12345/categoryindex"
     );
-    msg = msg.data[0].data.categoryIndex[this.$route.params.idx].products;
-    this.informantion = msg.filter(
-      item => item.sn === this.$route.params.id
-    )[0];
+    // console.log(msg.data[0].data.categoryIndex);
+    msg = msg.data[0].data.categoryIndex;
+    let ca = [];
+    for (let i = 0; i < msg.length; i++) {
+      ca = [...ca, ...msg[i].products];
+    }
+    console.log(ca)
+    this.informantion = ca.filter((item)=>{
+        return item.sn==this.$route.params.id
+    })[0]
   },
   data() {
     return {
