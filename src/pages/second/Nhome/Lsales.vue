@@ -46,7 +46,7 @@
 import Zsearch from "../../../components/Zsearch";
 export default {
   async created(){
-    let msg = await this.getData('get','http://10.3.132.11:12345/list')
+    let msg = await this.getData('get','//10.3.132.11:12345/list')
     console.log(msg)
   },
   data() {

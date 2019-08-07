@@ -15,7 +15,7 @@ export default {
     async created() {
     this.$store.categoryIndex = await this.getData(
       "get",
-      "http://10.3.132.11:12345/categoryindex"
+      "//10.3.132.11:12345/categoryindex"
     );
   }
 }
