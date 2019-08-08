@@ -72,8 +72,7 @@ export default {
     // console.log(this.grid)
     // console.log(msg.data[0].data.categoryIndex[this.index].products)
     this.products = msg.data[0].data.categoryIndex[this.index].products;
-    //将数据存入vuex 方便后面点击跳转详情页获取数据
-    this.$store.categoryIndex = msg.data[0].data.categoryIndex[this.index].products
+    // console.log(this.products)
   },
   data() {
     return {

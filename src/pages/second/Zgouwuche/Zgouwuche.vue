@@ -125,11 +125,6 @@ export default {
         await this.getData('post','//10.3.132.11:12345/gouwuche',obj)
     }
   },
-  // watch:{
-  //   information(val){
-
-  //   }
-  // },
   components:{
     Znav
   }
