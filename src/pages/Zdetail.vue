@@ -91,7 +91,7 @@
               <van-stepper v-model="amount" min="0" max="50" />
             </li>
           </ul>
-          <van-cell value="确定"  style="background:#4d3126" @click="sure" />
+          <van-cell value="确定" style="background:#4d3126" @click="sure" />
         </div>
       </div>
     </van-action-sheet>
@@ -102,23 +102,73 @@
 <script>
 import Znav from "../components/Znav";
 export default {
-  async created() {
-    //根据传过来的商品id遍历数组取得相应的详细信息
-    let msg = await this.getData(
-      "get",
-      "http://10.3.132.11:12345/categoryindex"
-    );
-    // console.log(msg.data[0].data.categoryIndex);
-    //可以通过一步步console.log看看我到底做了什么
-    msg = msg.data[0].data.categoryIndex;
-    let ca = [];
-    for (let i = 0; i < msg.length; i++) {
-      ca = [...ca, ...msg[i].products];
+  //用组件守卫作为切换器
+  beforeRouteEnter(to, from, next) {
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`
+    // 因为当守卫执行前，组件实例还没被创建
+    // 所以要通过传一个回调给next来访问组件实例
+    // 给实例的data里面的url存值是可以，但是在created阶段是拿不到的，所以存到vuex
+    // console.log(from.name);
+    // console.log(from.name);
+    if (from.name == "sales") {
+      next(() => {
+        sessionStorage.setItem("url", "//10.3.132.11:12345/list");
+      });
+    } else if(from.name!=null&&from.name!='sales'){
+      next(() => {
+        sessionStorage.setItem("url", "//10.3.132.11:12345/categoryindex");
+      });
+    }else if(from.name===null){
+      //刷新时的from.name是null
+      next()
     }
-    // console.log(ca)
-    this.informantion = ca.filter((item)=>{
-        return item.sn==this.$route.params.id
-    })[0]
+  },
+  created() {
+    // console.log(this.$store.state.url.slice(20));
+    //之所以要用延时，是因为拿sessionStorage会在sessionStorage更新之前就拿了
+    //例如sessionStorage上次记录的是category，
+    //但是这次我从sales录用进去，
+    //sessionStorage要更新成list，
+    //此时进详情页还是会拿到category,就会报错，此时需要刷新一下才能正确拿到更新过后的list
+    //如果用个延时器就不会有这种问题
+    setTimeout(async () => {
+      let url = sessionStorage.getItem("url");
+      // console.log(url)
+      let urlName = url.slice(20);
+      // console.log(urlName);
+      if (urlName === "categoryindex") {
+        //根据传过来的商品id遍历数组取得相应的详细信息
+        let msg = await this.getData("get", url);
+        // console.log(msg)
+        // console.log(msg.data[0].data.categoryIndex);
+        //可以通过一步步console.log看看我到底做了什么
+        msg = msg.data[0].data.categoryIndex;
+        let ca = [];
+        for (let i = 0; i < msg.length; i++) {
+          ca = [...ca, ...msg[i].products];
+        }
+        // console.log(ca)
+        this.informantion = ca.filter(item => {
+          return item.sn == this.$route.params.id;
+        })[0];
+      } else {
+        let msg = await this.getData("get", url);
+        // console.log(msg)
+        // console.log(msg.data[0].data.categoryIndex);
+        //可以通过一步步console.log看看我到底做了什么
+        msg = msg.data[0].data.specialOfferEvent;
+        // console.log(msg)
+        let ca = [];
+        for (let i = 0; i < msg.length; i++) {
+          ca = [...ca, ...msg[i].products];
+        }
+        // console.log(ca)
+        this.informantion = ca.filter(item => {
+          return item.sn == this.$route.params.id;
+        })[0];
+      }
+    }, 0);
   },
   data() {
     return {
@@ -141,33 +191,31 @@ export default {
       amount: 0,
       tan: false,
       informantion: {},
-      //节流状态
-      loaded: false,
       //存入商品信息的对象
-      obj:{}
+      obj: {},
     };
   },
   methods: {
-    change(){
+    change() {
       this.show = !this.show;
     },
     async sure() {
-      let username = localStorage.getItem('username')
-      if(username){
-      this.obj = {
+      let username = localStorage.getItem("username");
+      if (username) {
+        this.obj = {
           username,
-          id:this.$route.params.id,
-          num:this.amount,
-          url:this.informantion.detailImage,
-          price:this.informantion.price,
-          name:this.informantion.name
-        }
-      await this.getData('post','http://10.3.132.11:12345/detail',this.obj)      
-      alert('加入购物车成功')
-      this.show = !this.show
-      }else{
-        alert('请先登录！')
-        this.$router.push({name:'login'})
+          id: this.$route.params.id,
+          num: this.amount,
+          url: this.informantion.detailImage,
+          price: this.informantion.price,
+          name: this.informantion.name
+        };
+        await this.getData("post", "//10.3.132.11:12345/detail", this.obj);
+        alert("加入购物车成功");
+        this.show = !this.show;
+      } else {
+        alert("请先登录！");
+        this.$router.push({ name: "login" });
       }
     },
     showPopup() {

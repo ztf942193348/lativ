@@ -79,7 +79,7 @@ import Znav from '../../../components/Znav'
 export default {
   async created(){
       let username = localStorage.getItem('username')
-      let msg = await this.getData('get',`http://10.3.132.11:12345/detail?username=${username}`)
+      let msg = await this.getData('get',`//10.3.132.11:12345/detail?username=${username}`)
       // console.log(msg.data)
       this.information=msg.data;
       // console.log(this.information)
@@ -111,7 +111,7 @@ export default {
     },
     async Delete(id){
       let username = localStorage.getItem('username')
-      await this.getData('get',`http://10.3.132.11:12345/gouwuche?username=${username}&id=${id}`)
+      await this.getData('get',`//10.3.132.11:12345/gouwuche?username=${username}&id=${id}`)
       this.$router.go(0)
     },
     async onChange(val,id){
@@ -122,14 +122,9 @@ export default {
           id,
           num:val
         }
-        await this.getData('post','http://10.3.132.11:12345/gouwuche',obj)
+        await this.getData('post','//10.3.132.11:12345/gouwuche',obj)
     }
   },
-  // watch:{
-  //   information(val){
-
-  //   }
-  // },
   components:{
     Znav
   }

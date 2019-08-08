@@ -25,7 +25,7 @@ export default {
   async created() {
     let msg = await this.getData(
       "get",
-      "http://10.3.132.11:12345/categoryindex"
+      "//10.3.132.11:12345/categoryindex"
     );
     // console.log(msg.data[0].data.categoryIndex);
     msg = msg.data[0].data.categoryIndex;
