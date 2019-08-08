@@ -67,7 +67,7 @@ export default {
     //从categoryIndex开始就是可以选择分类了，比如现在的0代表women
     //   console.log(msg.data[0].data.categoryIndex[0].itemCategories)
     //这是宫格里面的资料
-    msg = await this.getData("get","http://10.3.132.11:12345/categoryindex");
+    msg = await this.getData("get","//10.3.132.11:12345/categoryindex");
     this.grid = msg.data[0].data.categoryIndex[this.index].itemCategories.splice(0,8);
     // console.log(this.grid)
     // console.log(msg.data[0].data.categoryIndex[this.index].products)

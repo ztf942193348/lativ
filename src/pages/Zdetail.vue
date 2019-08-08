@@ -106,7 +106,7 @@ export default {
     //根据传过来的商品id遍历数组取得相应的详细信息
     let msg = await this.getData(
       "get",
-      "http://10.3.132.11:12345/categoryindex"
+      "//10.3.132.11:12345/categoryindex"
     );
     // console.log(msg.data[0].data.categoryIndex);
     //可以通过一步步console.log看看我到底做了什么
@@ -162,7 +162,7 @@ export default {
           price:this.informantion.price,
           name:this.informantion.name
         }
-      await this.getData('post','http://10.3.132.11:12345/detail',this.obj)      
+      await this.getData('post','//10.3.132.11:12345/detail',this.obj)      
       alert('加入购物车成功')
       this.show = !this.show
       }else{
