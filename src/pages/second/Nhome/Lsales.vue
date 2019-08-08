@@ -2,139 +2,148 @@
   <div>
     <Zsearch :route="6"></Zsearch>
     <div class="L">
-<!-- 第一层 -->
-    <van-tabs type="card" background="#f3f3f3" color="#4d3126" :border="false">
-      <van-tab v-for="(item, index) in sales" :key="index" :title="item"></van-tab>
-    </van-tabs>
-    <!-- 第二层 -->
-    <van-tabs type="line" color="#4d3126">
-      <van-tab v-for="(item, index) in shoplist" :key="index" :title="item"></van-tab>
-    </van-tabs>
-    <!-- 主体 -->
-    <div class="sales-left">
-      <van-col>
-        <van-row v-for="(img, index) in leftShopImg" :key="index">
-          <img :src="img" alt />
-          <div class="btm normal">
-            <span class="name">棉質經典帆布休閒鞋-女</span>
-            <div class="priceArea">
-              <span class="price">290</span>
-              <span class="originprice">390</span>
-            </div>
-          </div>
-        </van-row>
-      </van-col>
-    </div>
-    <div class="sales-right">
-      <van-col>
-        <van-row v-for="(img, index) in rightShopImg" :key="index">
-          <img :src="img" alt />
-          <div class="btm normal">
-            <span class="name">棉質經典帆布休閒鞋-女</span>
-            <div class="priceArea">
-              <span class="price">290</span>
-              <span class="originprice">390</span>
-            </div>
-          </div>
-        </van-row>
-      </van-col>
-    </div>
+      <!-- 第一层 -->
+      <van-tabs
+        @click="Bonclick"
+        v-model="active"
+        type="card"
+        id="wai"
+        background="#f3f3f3"
+        color="#4d3126"
+        :border="false"
+      >
+        <van-tab v-for="(item, index) in msg" :key="index" :title="item.title">
+          <!-- 第二层 -->
+          <van-tabs type="line" color="#4d3126" :border="false" @click="onClick">
+            <van-tab v-for="(value, index) in item.categories" :key="index" :title="value">
+              <!-- 主体 -->
+              <!-- {{index}} -->
+              <div class="sales-left">
+                <van-col span="11" v-for="(detail, index) in products" :key="detail.sn">
+                  <router-link :to="{name:'detail',params:{id:detail.sn}}">
+                    <van-image width="100" height="100" :src="detail.image" />
+                  <div class="btm normal">
+                    <span class="name">{{detail.name}}</span>
+                    <div class="priceArea">
+                      <span class="price">{{detail.price}}</span>
+                      <span class="originprice">{{detail.originPrice}}</span>
+                    </div>
+                  </div>
+                  </router-link>
+                  
+                </van-col>
+              </div>
+            </van-tab>
+          </van-tabs>
+        </van-tab>
+      </van-tabs>
     </div>
   </div>
 </template>
 <script>
 import Zsearch from "../../../components/Zsearch";
 export default {
-  async created(){
-    let msg = await this.getData('get','//10.3.132.11:12345/list')
-    console.log(msg)
+  async created() {
+    let msg = await this.getData("get", "//10.3.132.11:12345/list");
+    // console.log(msg.data[0].data.specialOfferEvent);
+    this.msg = msg.data[0].data.specialOfferEvent;
+    // console.log(this.msg)
+    let m = this.msg[this.active];
+    // console.log(m.products)
+    this.arr = m.products;
+    let a = this.arr.filter(item => {
+      return item.categories.includes(this.stitle);
+    });
+    // console.log(a);
+    this.products = a;
   },
   data() {
     return {
       active: 0,
-      sales: [
-        "爸氣獻禮",
-        "感恩父親節",
-        "七夕獻禮",
-        "清爽推薦",
-        "零碼瘋搶",
-        "超值精選",
-        "涼夏特惠"
-      ],
-      shoplist: ["WOMEN", "MEN", "KIDS", "BABY", "SPORTS"],
-      leftShopImg: [
-        "https://s1.lativ.com.tw/m/i/40156/40156011/4015601_360.jpg",
-        "https://s2.lativ.com.tw/m/i/40336/40336011/4033601_360.jpg",
-        "https://s1.lativ.com.tw/m/i/40453/40453011/4045301_360.jpg",
-        "https://s3.lativ.com.tw/m/i/40320/40320011/4032001_360.jpg",
-        "https://s1.lativ.com.tw/m/i/43002/43002011/4300201_360.jpg",
-        "https://s2.lativ.com.tw/m/i/40299/40299011/4029901_360.jpg",
-        "https://s1.lativ.com.tw/m/i/40126/40126011/4012601_360.jpg",
-        "https://s1.lativ.com.tw/m/i/40172/40172011/4017201_360.jpg",
-        "https://s1.lativ.com.tw/m/i/40157/40157011/4015701_360.jpg",
-        "https://s3.lativ.com.tw/m/i/40297/40297011/4029701_360.jpg",
-        "https://s3.lativ.com.tw/m/i/41296/41296011/4129601_360.jpg"
-      ],
-      rightShopImg: [
-        "https://s1.lativ.com.tw/m/i/40335/40335011/4033501_360.jpg",
-        "https://s2.lativ.com.tw/m/i/40452/40452011/4045201_360.jpg",
-        "https://s3.lativ.com.tw/m/i/40739/40739011/4073901_360.jpg",
-        "https://s3.lativ.com.tw/m/i/40729/40729011/4072901_360.jpg",
-        "https://s1.lativ.com.tw/m/i/40150/40150011/4015001_360.jpg",
-        "https://s3.lativ.com.tw/m/i/40104/40104011/4010401_360.jpg",
-        "https://s3.lativ.com.tw/m/i/40472/40472011/4047201_360.jpg",
-        "https://s2.lativ.com.tw/m/i/40171/40171011/4017101_360.jpg",
-        "https://s4.lativ.com.tw/m/i/40279/40279011/4027901_360.jpg",
-        "https://s1.lativ.com.tw/m/i/43692/43692011/4369201_360.jpg"
-      ]
+      //存放大数组(霸气献礼，感恩父亲节。。)
+      msg: [],
+      // cate: 0,
+      //存放中数组 (WOMEN MEN KID..)
+      arr: [],
+      //存products数组用(具体到WOMEN)
+      products: [],
+      btitle: "爸氣獻禮",
+      stitle: "WOMEN"
     };
+  },
+  methods: {
+    Bonclick(name, title) {
+      // console.log(this.active);
+    },
+    onClick(name, title) {
+      // console.log(title);
+      this.stitle = title;
+      // console.log(this.msg[this.active]);
+    }
+  },
+  watch: {
+    stitle(val) {
+      let m = this.msg[this.active];
+      // console.log(m.products)
+      this.arr = m.products;
+      let a = this.arr.filter(item => {
+        return item.categories.includes(val);
+      });
+      // console.log(a);
+      this.products = a;
+    }
   },
   components: {
     Zsearch
   }
-  // async created() {
-  //     let list = await this.$axios(
-  //         "http://10.3.132.173:12345/list"
-  //     );
-  //     // console.log(this.list);
-  // }
 };
 </script>
 <style lang="scss" scoped>
-/deep/ .van-tabs {
+// /deep/ .van-tabs {
+//   padding-top: 0;
+//   margin: 0 -16px;
+//   height: 48px;
+//   .van-tabs__wrap {
+//     height: 48px;
+//     .van-tabs__nav {
+//       height: 48px;
+//       border: none;
+//       .van-tab {
+//         line-height: 48px;
+//       }
+//     }
+//   }
+// }
+#wai {
   padding-top: 0;
-  margin: 0 -16px;
-  height: 48px;
-  .van-tabs__wrap {
+  /deep/.van-tabs__wrap.van-tabs__wrap--scrollable {
     height: 48px;
-    .van-tabs__nav {
+    .van-tabs__nav.van-tabs__nav--card {
+      margin: 0;
       height: 48px;
-      border: none;
-      .van-tab {
+      .van-tab.van-tab--active {
+        height: 48px;
+      }
+      .van-ellipsis {
         line-height: 48px;
+        height: 48px;
       }
     }
   }
 }
-.L{
+.L {
   overflow: hidden;
 }
-.sales-left{
-  float: left;
-}
-.sales-right{
-  float:right;
-}
-.van-row {
-  img {
-    width: calc(50vw - 1.125rem);
-    margin-bottom: 1rem;
-    margin-left: 0.75rem;
-    display: inline-block;
-    text-align: center;
-    position: relative;
-  }
-}
+// .van-row {
+//   img {
+//     width: calc(50vw - 1.125rem);
+//     margin-bottom: 1rem;
+//     margin-left: 0.75rem;
+//     display: inline-block;
+//     text-align: center;
+//     position: relative;
+//   }
+// }
 .btm {
   margin-top: 0.313rem;
   font-size: 0.813rem;
