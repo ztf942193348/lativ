@@ -67,12 +67,12 @@ export default {
       if (this.password.trim() != "" && this.username.trim() != "") {
         let status = await this.getData(
           "get",
-          `http://10.3.132.11:12345/regist?username=${this.username}`
+          `//10.3.132.11:12345/regist?username=${this.username}`
         );
         if (status.data == 1) {
           let msg = await this.getData(
             "post",
-            "http://10.3.132.11:12345/regist",
+            "//10.3.132.11:12345/regist",
             {
               username: this.username,
               password: this.password
@@ -95,7 +95,7 @@ export default {
       if (this.username.trim() != "" && this.password.trim() != "") {
         let status = await this.getData(
           "post",
-          'http://10.3.132.11:12345/login',
+          '//10.3.132.11:12345/login',
           {
               username: this.username,
               password: this.password

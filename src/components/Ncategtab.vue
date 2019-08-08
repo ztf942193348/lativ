@@ -2,8 +2,12 @@
   <div>
     <van-tabs v-model="active" swipeable>
       <van-tab v-for="(item,index) in categtitle" :title="item.name" :key="index">
-        <div class="cateclass"><router-link to="/allgoods">全部商品</router-link></div>
-        <div class="cateclass"><router-link to="/allgoods">秋季新品</router-link></div>
+        <div class="cateclass">
+          <router-link to="/allgoods">全部商品</router-link>
+        </div>
+        <div class="cateclass">
+          <router-link to="/allgoods">秋季新品</router-link>
+        </div>
         <van-sidebar v-model="activeKey" style="width: 100px;">
           <van-sidebar-item
             v-for="(list,ind) in item.subCategories"
@@ -36,15 +40,14 @@
                 style="width: 33.33%;text-align: center;font-size: .688rem; float: left;
                 "
               >
-              <router-link :to="{name:'category'}">
-<img
-                  style="width: 60%;margin-left: 20%;margin-top: 1.25rem; margin-right: 20%;"
-                  :src="item.image"
-                  alt
-                />
-              </router-link>
+                <router-link :to="{name:'category'}">
+                  <img
+                    style="width: 60%;margin-left: 20%;margin-top: 1.25rem; margin-right: 20%;"
+                    :src="item.image"
+                    alt
+                  />
+                </router-link>
 
-                
                 <font v-text="item.name"></font>
               </li>
             </ul>
@@ -61,7 +64,7 @@ export default {
       //
       active: 0,
       activeKey: 0,
-      categtitle: null, 
+      categtitle: null,
       cateindex: ""
     };
   },
@@ -78,18 +81,19 @@ export default {
     );
     // console.log(categlist.data.mainCategories);
     this.categtitle = categlist.data.mainCategories;
+    this.cateindex=this.categtitle[0].subCategories[0]
   }
 };
 </script>
 <style lang="scss">
-.cateclass{
-width:78px;
-height:28px;
-font-size: 14px;
-padding-left:22px;
-margin:14px -5px;
-  a{
-    color:#323233;
+.cateclass {
+  width: 78px;
+  height: 28px;
+  font-size: 14px;
+  padding-left: 22px;
+  margin: 14px -5px;
+  a {
+    color: #323233;
   }
 }
 </style>
