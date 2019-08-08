@@ -1,29 +1,85 @@
-# lativ
+# 地址
+https://oneninezerofive.github.io/lativ/dist/#/home/main
 
-## Project setup
-```
-npm install
-```
+# 接口文档
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+|页面|请求参数|方式|url|
+|-|-|-|-|
+|首页|无|get|http://10.3.132.11:12345/list|
+|分目录|无|get|http://10.3.132.11:12345/categoryindex|
+|限时特惠|无|get|http://10.3.132.11:12345/list|
+|注册|username|get|http://10.3.132.11:12345/regist|
+|注册|{username:xx, password:xx}|post|http://10.3.132.11:12345/regist|
+|登录|{username:xx, password:xx}|post|http://10.3.132.11:12345/login|
 
-### Compiles and minifies for production
-```
-npm run build
-```
+# 规范
+## 命名规范
+大家在写自己负责的组件和容器记得带上自己的名字，名字小写，组件和容器的首字母大写。格式：
+Zhome
 
-### Run your tests
-```
-npm run test
-```
+# 任务分配
+## 张霆峰
+1.前端路由, 女装之后的(二级容器)页面，后端接口\
+2.写路由守卫，个人页面\
+3.登录注册逻辑，购物车静态\
+4.详情页静态,动态渲染,购物车逻辑,搜索逻辑
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 宁其亮
+1.首页,精选\
+2.注册登录页面\
+3.分类相关所有页面
+
+## 罗伟志
+1.限时特惠\
+2.消息,活动\
+3.设置，品牌日志，客户信息\
+4.优惠券，订单
+
+#遇到的问题\
+1.因为最开始没有用rem布局，所以大家要先统一手机视口大小 选用的是iphone6/7/8 \
+2.路由冲突，所以写之前要先由一个人先定好路由。总之就是谁负责的页面其他人都不要去动，如果需要的话可以联系那个页面的负责人做一些修改。\
+3.git pull覆盖了本地分支。每个组员都要先切换到dev分支pull下来，再merge自己的分支。\
+4.在编写路由守卫时，发现不好拿vue-router的实例对象。编程式路由是这么写的：`router(vue-router的实例对象).push({})`
+原本是这么写的
+```js
+export default new Router({
+    在这里打this是undefined，所以换了下面的写法
+})
+```
+现在改成了这样
+```js
+const router = new Router({})
+export default router
+```
+就可以轻松拿到实例对象啦
+
+5.想要让html,body默认高度100%。\
+则需要在App.vue写不加scoped的样式`#app{height:100%}`。\
+在各种一级页面样式写上`html,body{height:100%}`\
+但是发现这样做其他用了vantui的页面会炸\
+第二天发现只要在index.html加上\
+`html,body,#app{height:100%}`就可以解决问题，vantui样式也不会乱
+
+6.编写mongodb数据库的时候要注意数据类型。后端的数据类型不像前端那么不严谨。字符串1和数字1之间是不会隐式转换的。
+
+7.localStorage只能存字符串，所以要用到JSON.stringify去往里面存对象
+
+8.axios post请求 `'{"username":"13113019764","goods":[{"id":"44229031","num":1}]}': '' }` \
+用了qs模块stringify之后变成这样`{
+  username: '13113019764',
+  'goods[0][id]': '43024011',
+  'goods[0][num]': '5',
+  'goods[1][id]': '43555011',
+  'goods[1][num]': '4' }`\
+都不是我想要的亚子。
+我想要的应该是这样：`{"username":"13113019764","goods":[{"id":"44229031","num":1},{"id":"44229032","num":4}]` \
+最后决定一种商品传一次数据，而不是一次性把所有商品信息存进去
+
+9.分配好的任务应该先决定写的页面叫什么名字，否则合并的时候都不知道写的到底是哪个页面。
+
+10.vue项目如何刷新当前页面:在处理列表时，常常有删除一条数据或者新增数据之后需要重新刷新当前页面的需求。https://www.cnblogs.com/yinn/p/9056731.html
+
+11.在第一次添加商品时，如果连续快速点击增加商品（+）数据库那边还没反应过来，相当于同时添加了多次同种类商品而来不及更新
+
+12.每次电脑切换网线时，域名都会变。所以开启后端接口的电脑不应该随意换网线。
