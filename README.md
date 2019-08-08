@@ -1,5 +1,5 @@
 # 地址
-https://oneninezerofive.github.io/lativ/dist/#/home/man
+https://oneninezerofive.github.io/lativ/dist/#/home/main
 
 # 接口文档
 
