@@ -45,7 +45,7 @@ import Zsearch from "../../../components/Zsearch";
 export default {
   async created() {
     let msg = await this.getData("get", "//10.3.132.11:12345/list");
-    // console.log(msg.data[0].data.specialOfferEvent);
+    console.log(msg.data[0].data.specialOfferEvent);
     this.msg = msg.data[0].data.specialOfferEvent;
     // console.log(this.msg)
     let m = this.msg[this.active];
