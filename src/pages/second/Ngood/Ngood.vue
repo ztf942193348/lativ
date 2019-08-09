@@ -9,6 +9,7 @@
             finished-text="没有更多了"
         >
         <van-cell
+            :to="{name:'detail',params:{id:item.id}}"
             v-for="(item,index) in goodList"
             :key="index"
         >
@@ -56,6 +57,7 @@ export default {
         this.goodList = [...this.goodList,...poilist.data[0].data];
         // console.log(poilist.data[0].data);
         // 加载状态结束
+        console.log(this.goodList)
         this.loading = false;
         // 数据全部加载完成
         if (this.goodList.length >= 30) {

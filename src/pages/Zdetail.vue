@@ -109,12 +109,15 @@ export default {
     // 因为当守卫执行前，组件实例还没被创建
     // 所以要通过传一个回调给next来访问组件实例
     // 给实例的data里面的url存值是可以，但是在created阶段是拿不到的，所以存到vuex
-    // console.log(from.name);
-    // console.log(from.name);
+    console.log(from.name);
     if (from.name == "sales") {
       next(() => {
         sessionStorage.setItem("url", "//10.3.132.11:12345/list");
       });
+    }else if(from.name!=null&&from.name=='jingxuan'){
+      next(()=>{
+        sessionStorage.setItem("url", "//10.3.132.11:12345/focus");
+      })
     } else if(from.name!=null&&from.name!='sales'){
       next(() => {
         sessionStorage.setItem("url", "//10.3.132.11:12345/categoryindex");
@@ -123,6 +126,7 @@ export default {
       //刷新时的from.name是null
       next()
     }
+    
   },
   created() {
     // console.log(this.$store.state.url.slice(20));
@@ -134,7 +138,7 @@ export default {
     //如果用个延时器就不会有这种问题
     setTimeout(async () => {
       let url = sessionStorage.getItem("url");
-      // console.log(url)
+      console.log(url)
       let urlName = url.slice(20);
       // console.log(urlName);
       if (urlName === "categoryindex") {
@@ -152,7 +156,17 @@ export default {
         this.informantion = ca.filter(item => {
           return item.sn == this.$route.params.id;
         })[0];
-      } else {
+      } else if(urlName==="focus"){
+        let msg = await this.getData("get", url);
+        console.log(msg.data[0].data)
+        this.informantion = msg.data[0].data.filter((item)=>{
+          // console.log(item.id,this.$route.params.id)
+          return item.id == this.$route.params.id
+        })[0]
+        let {salePrice:price,productName:name} = this.informantion;
+        this.informantion={...this.informantion,price,name}
+      }
+      else {
         let msg = await this.getData("get", url);
         // console.log(msg)
         // console.log(msg.data[0].data.categoryIndex);
@@ -310,6 +324,5 @@ export default {
   padding-top: 0;
   padding-bottom: 0;
 }
-/deep/ .van-popup.van-popup--center {
-}
+
 </style>
