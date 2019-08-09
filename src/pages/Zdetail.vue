@@ -109,19 +109,19 @@ export default {
     // 因为当守卫执行前，组件实例还没被创建
     // 所以要通过传一个回调给next来访问组件实例
     // 给实例的data里面的url存值是可以，但是在created阶段是拿不到的，所以存到vuex
-    // console.log(from.name);
+    console.log(from.name);
     if (from.name == "sales") {
       next(() => {
         sessionStorage.setItem("url", "//10.3.132.11:12345/list");
-      });
-    } else if(from.name!=null&&from.name=='sales'){
-      next(() => {
-        sessionStorage.setItem("url", "//10.3.132.11:12345/categoryindex");
       });
     }else if(from.name!=null&&from.name=='jingxuan'){
       next(()=>{
         sessionStorage.setItem("url", "//10.3.132.11:12345/focus");
       })
+    } else if(from.name!=null&&from.name!='sales'){
+      next(() => {
+        sessionStorage.setItem("url", "//10.3.132.11:12345/categoryindex");
+      });
     }else if(from.name===null){
       //刷新时的from.name是null
       next()
