@@ -45,7 +45,7 @@ import Zsearch from "../../../components/Zsearch";
 export default {
   async created() {
     let msg = await this.getData("get", "//10.3.132.11:12345/list");
-    console.log(msg.data[0].data.specialOfferEvent);
+    // console.log(msg.data[0].data.specialOfferEvent);
     this.msg = msg.data[0].data.specialOfferEvent;
     // console.log(this.msg)
     let m = this.msg[this.active];
@@ -74,6 +74,7 @@ export default {
   methods: {
     Bonclick(name, title) {
       // console.log(this.active);
+      this.btitle = title;
     },
     onClick(name, title) {
       // console.log(title);
@@ -82,6 +83,25 @@ export default {
     }
   },
   watch: {
+  async  btitle(val) {
+    console.log(val)
+    let msg = await this.getData("get", "//10.3.132.11:12345/list");
+    // console.log(msg.data[0].data.specialOfferEvent);
+    this.msg = msg.data[0].data.specialOfferEvent;
+    // console.log(this.msg)
+    this.arr = this.msg.filter((item)=>{
+      return item.title==val
+    })[0].products
+    // console.log(this.arr)
+    // let m = this.msg[val];
+    // console.log(m.products)
+    // this.arr = m.products;
+    let a = this.arr.filter(item => {
+      return item.categories.includes(this.stitle);
+    });
+    // // console.log(a);
+    this.products = a;
+    },
     stitle(val) {
       let m = this.msg[this.active];
       // console.log(m.products)
