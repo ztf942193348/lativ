@@ -112,7 +112,9 @@ export default {
     async Delete(id){
       let username = localStorage.getItem('username')
       await this.getData('get',`//10.3.132.11:12345/gouwuche?username=${username}&id=${id}`)
-      this.$router.go(0)
+      let msg = await this.getData('get',`//10.3.132.11:12345/detail?username=${username}`)
+      // console.log(msg.data)
+      this.information=msg.data;
     },
     async onChange(val,id){
       // console.log(val,id)
