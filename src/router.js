@@ -84,9 +84,15 @@ const router = new Router({
           name: 'gouwuche',
           component: Home.components.Zgouwuche,
           //进入购物车的路由守卫，若有登录，则允许进入。若没有登录，则推去login路由
-          beforeEnter: function(to,from,next){
+          beforeEnter: async function(to,from,next){
             let isLogin = localStorage.getItem('isLogin');
-            if(isLogin){
+            let obj = {
+              token:localStorage.getItem('token')
+            }
+            let isSelf = await Vue.prototype.getData('post','//10.3.132.11:12345/login/ckeckToken',obj)
+            // console.log(isSelf.data.bool)
+            isSelf = isSelf.data.bool
+            if(isLogin&&isSelf){
               next()
             }else{
               router.push({
@@ -101,9 +107,15 @@ const router = new Router({
           name: 'geren',
           component: Home.components.Zgeren,
           //进入个人的路由守卫，若有登录，则允许进入。若没有登录，则推去login路由
-          beforeEnter: function(to,from,next){
+          beforeEnter: async function(to,from,next){
             let isLogin = localStorage.getItem('isLogin');
-            if(isLogin){
+            let obj = {
+              token:localStorage.getItem('token')
+            }
+            let isSelf = await Vue.prototype.getData('post','//10.3.132.11:12345/login/ckeckToken',obj)
+            // console.log(isSelf.data.bool)
+            isSelf = isSelf.data.bool
+            if(isLogin&&isSelf){
               next()
             }else{
               router.push({
