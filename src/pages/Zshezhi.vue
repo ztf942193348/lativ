@@ -27,6 +27,7 @@ export default {
     logout(){
       localStorage.removeItem("username")
       localStorage.removeItem("isLogin")
+      localStorage.removeItem('token')
       alert('退出登录成功')
       this.$router.push({name:'main'})
     }

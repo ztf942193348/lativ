@@ -108,7 +108,7 @@ export default {
     // 不！能！获取组件实例 `this`
     // 因为当守卫执行前，组件实例还没被创建
     // 所以要通过传一个回调给next来访问组件实例
-    // 给实例的data里面的url存值是可以，但是在created阶段是拿不到的，所以存到vuex
+    // 给实例的data里面的url存值是可以，但是在created阶段是拿不到的，所以存到sessionStorage
     console.log(from.name);
     if (from.name == "sales") {
       next(() => {
@@ -136,6 +136,7 @@ export default {
     //sessionStorage要更新成list，
     //此时进详情页还是会拿到category,就会报错，此时需要刷新一下才能正确拿到更新过后的list
     //如果用个延时器就不会有这种问题
+    //目前原因未知
     setTimeout(async () => {
       let url = sessionStorage.getItem("url");
       console.log(url)

@@ -110,6 +110,9 @@ export default {
             localStorage.setItem('isLogin',1);
             //往localStorage存入用户名
             localStorage.setItem('username',`${this.username}`);
+            //往localStorage存入token
+            localStorage.setItem('token',`${status.data}`)
+            console.log(status.data)
             //跳转
             this.$router.push({name:'main'});
         }
